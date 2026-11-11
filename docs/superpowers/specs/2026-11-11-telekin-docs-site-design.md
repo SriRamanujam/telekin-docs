@@ -109,7 +109,7 @@ Their questions get answered by a page, not a DM to the founder.
 
 | Approach | Trade-off | Outcome |
 |---|---|---|
-| **A. Starlight on Cloudflare Workers, public repo** | Free; PR previews; easy custom domain; adds one vendor account. | **Chosen.** Previews matter most when one person reviews many generated pages. |
+| **A. Starlight on Cloudflare Workers, its own repo (private for now)** | Free; PR previews; easy custom domain; adds one vendor account. | **Chosen.** Previews matter most when one person reviews many generated pages. |
 | B. Starlight on GitHub Pages | No new vendor; no PR previews. | Rejected: reviewing generated docs without previews is slow. |
 | C. The founder's own cluster | Plays to the founder's strengths. But public docs uptime depends on homelab infra, it's ops work for a static site, and it mixes homelab and business infra. | Rejected. |
 | A private, tester-only site (e.g. one published page) | Fastest, but gets rewritten at launch. | Rejected in favor of starting the public docs now. |
@@ -291,7 +291,7 @@ settled without the founder; the founder can override any of them.
   - Keep the tested interview prompt word for word during the test.
   - The text around a prompt stays plain-language.
 - **Infrastructure (planner's call).** The plan splits the work:
-  - **The builder** creates the public repo with `gh` and builds the site.
+  - **The builder** creates the private repo with `gh` and builds the site.
   - **The founder** registers the domain and puts it on Cloudflare DNS,
     creates the Cloudflare account, connects Workers Builds to the repo,
     and attaches `<docs-domain>`. These are a checklist in the plan, placed
