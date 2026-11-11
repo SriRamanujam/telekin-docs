@@ -63,6 +63,8 @@ Their questions get answered by a page, not a DM to the founder.
 - API or developer reference for building on Telekin.
 - Translations, a blog, a changelog page, versioned docs.
 - Login or gating. The site is public; nothing on it is secret.
+- Being found by search engines, before signup exists (see Access and
+  indexing).
 - Marketing landing pages. The docs may say what Telekin is, but the
   landing page is a separate effort.
 
@@ -91,9 +93,10 @@ Their questions get answered by a page, not a DM to the founder.
   - production deploys from `main`;
   - **preview builds on every PR** post the preview URLs back on the PR;
   - the custom domain is `<docs-domain>`.
-- A **new repo**, `<org>/<docs-repo>`, separate from okf-mcp. It's local
-  only for now; it goes public on GitHub when the site deploys. This design
-  lives in it. License
+- A **new private repo**, `<org>/<docs-repo>`, separate from okf-mcp, with
+  this design in it (founder's choice). Workers Builds deploys from a
+  private repo through Cloudflare's GitHub app. Make it public around
+  launch. Until then, don't use Starlight's "Edit this page" links. License
   the docs content CC BY 4.0, and the site code (config, components) MIT,
   unless the founder says otherwise. This is the builder's call, marked for
   the founder's review.
@@ -236,6 +239,18 @@ that point to the site.
   space".
 - Each page states its Diataxis type through its sidebar group only; don't
   label pages "Tutorial:" in their titles.
+
+## Access and indexing (founder's decision)
+
+- **The whole site is `noindex`** until public signup exists: a robots meta
+  tag on every page plus a `robots.txt` that disallows everything. It's one
+  setting to remove at launch.
+- **Setup pages and the first tutorial** say the server URL and key come
+  "from your invite".
+- **A "Want access? Join the waitlist" link** goes on the home page, in
+  the header or sidebar, and in the "before you start" part of setup
+  pages. It points to `<waitlist link>`: an email address until there's a
+  form. Keep it in one config value, so swapping it later is one change.
 
 ## Settled after review
 
