@@ -29,7 +29,9 @@ export function hasBearerToken(line) {
   for (const m of line.matchAll(/bearer\s+(\S+)/gi)) {
     const tok = m[1].replace(/[`"'.,;:)]+$/, '');
     if (/^<[^>]+>/.test(tok) || /^\$\{/.test(tok) || /^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+$/.test(tok)) continue;
-    if (/^[A-Za-z0-9._~+\/-]{12,}$/.test(tok)) return true;
+    if (/^[a-z]+(?:-[a-z]+)+$/.test(tok)) continue; // your-api-key, your-key-here
+    // A real token is long, token-shaped and contains a digit.
+    if (tok.length >= 16 && /^[A-Za-z0-9._~+\/-]+$/.test(tok) && /\d/.test(tok)) return true;
   }
   return false;
 }

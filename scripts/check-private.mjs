@@ -7,11 +7,12 @@ import { walk, report } from './lib.mjs';
 import { PATTERNS } from './private-patterns.mjs';
 
 const BINARY = /\.(png|jpe?g|gif|webp|ico|woff2?)$/i;
-// The plans quote the test fixtures this check is meant to catch, so skip them.
 const tracked = execSync('git ls-files --cached --others --exclude-standard', { encoding: 'utf8' })
   .split('\n')
-  .filter((f) => f && f !== 'package-lock.json' && !BINARY.test(f) && !f.startsWith('docs/superpowers/plans/') && existsSync(f));
+  .filter((f) => f && f !== 'package-lock.json' && !BINARY.test(f) && existsSync(f));
 const built = existsSync('dist') ? walk('dist', ['.html', '.xml', '.txt', '.js', '.css', '.json']) : [];
+// Generic patterns are for prose: in dist, only html, xml and txt get them.
+const GENERIC_DIST = /\.(html|xml|txt)$/;
 const files = [...new Set([...tracked, ...built])];
 
 const raw = existsSync('.denylist')
@@ -31,7 +32,13 @@ if (!deny.length) {
 const failures = [];
 for (const file of files) {
   const lines = readFileSync(file, 'utf8').split('\n');
-  const selfPatterns = file === 'scripts/check-private.test.mjs' || file === 'scripts/private-patterns.mjs';
+  // These files quote the fixtures the patterns are meant to catch, and
+  // bundled JS/CSS is not prose; they still get the denylist scan.
+  const selfPatterns =
+    file === 'scripts/check-private.test.mjs' ||
+    file === 'scripts/private-patterns.mjs' ||
+    file.startsWith('docs/superpowers/plans/') ||
+    (file.startsWith('dist/') && !GENERIC_DIST.test(file));
   lines.forEach((line, i) => {
     const lower = line.toLowerCase();
     if (!selfPatterns) {

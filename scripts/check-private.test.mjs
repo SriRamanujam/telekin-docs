@@ -8,6 +8,9 @@ test('bearer token', () => {
   assert.equal(hasBearerToken('Authorization: Bearer YOUR_API_KEY'), false);
   assert.equal(hasBearerToken('Authorization: Bearer <key>'), false);
   assert.equal(hasBearerToken('the word Bearer matters'), false);
+  assert.equal(hasBearerToken('Use Bearer authentication here'), false);
+  assert.equal(hasBearerToken('Authorization: Bearer your-api-key'), false);
+  assert.equal(hasBearerToken('Bearer your-key-here'), false);
   assert.equal(hasBearerToken('bearer abcdef1234567890abcd'), true);
   assert.equal(hasBearerToken('Authorization: BEARER abcdef1234567890abcd'), true);
 });

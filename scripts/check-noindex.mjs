@@ -7,7 +7,9 @@ const failures = [];
 const META = /<meta[^>]*name="robots"[^>]*content="noindex, nofollow"/;
 
 for (const file of walk('dist', ['.html'])) {
-  if (!META.test(readFileSync(file, 'utf8'))) failures.push(`${file}: no robots noindex meta`);
+  const html = readFileSync(file, 'utf8');
+  if (!META.test(html)) failures.push(`${file}: no robots noindex meta`);
+  if (/<link\b[^>]*\brel\s*=\s*["']?sitemap\b/i.test(html)) failures.push(`${file}: has a rel="sitemap" link`);
 }
 if (!existsSync('dist/robots.txt')) {
   failures.push('dist/robots.txt missing');

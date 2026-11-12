@@ -4,7 +4,8 @@ import { readFileSync } from 'node:fs';
 import { basename } from 'node:path';
 import { walk, report } from './lib.mjs';
 
-const today = new Date().toISOString().slice(0, 10); // UTC
+// UTC today plus one day of slack for writers ahead of UTC.
+const today = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
 const failures = [];
 for (const file of walk('src/content/docs/how-to/connect', ['.md', '.mdx'])) {
   if (['index.mdx', 'index.md'].includes(basename(file))) continue;
