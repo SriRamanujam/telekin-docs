@@ -25,7 +25,7 @@ You'll need: your server URL and key (from your invite).
 2. Click **+ Add**, then **Add custom connector**.
 3. Name it `Telekin`, paste the **Server URL**, and click **Continue**.
 4. For authentication, choose **No sign in**.
-5. Under **Request headers**, add a header named `Authorization` with the value `Bearer <your key>`. Include the word `Bearer`, a space, then the key. Click **Add**.
+5. Under **Request headers**, choose the header name `authorization` from the list (or **Custom header** if it isn't listed; capitalisation of the name doesn't matter). Enter the value `Bearer <your key>`: the word `Bearer`, a space, then the key. Mark it **Required**, then click **Add**.
 6. In a chat, click **+**, then **Connectors**, and make sure `Telekin` is on.
 
 </Steps>
@@ -43,7 +43,7 @@ A few things worth knowing:
 
 ## Check it works
 
-In a chat with `Telekin` switched on, ask: **"What tools do you have from Telekin?"** You should see Claude list tools such as search and reading and writing notes. Then ask **"What do you know about me?"**; on an empty memory it will tell you there's nothing yet.
+In a chat with `Telekin` switched on, ask: **"What tools do you have from Telekin?"** You should see Claude list tools for searching and saving to your memory. Then ask **"What do you know about me?"**; on an empty memory it will tell you there's nothing yet.
 
 If the connector won't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer ` (with a space). If Claude says it has no tools, make sure the connector is toggled on in this chat (**+**, then **Connectors**).
 

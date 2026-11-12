@@ -30,7 +30,7 @@ This page uses Claude on the web (claude.ai), because it needs no terminal. If y
 2. Click **+ Add**, then **Add custom connector**.
 3. Name it `Telekin`, paste the **Server URL**, and click **Continue**.
 4. For authentication, choose **No sign in**.
-5. Under **Request headers**, add a header named `Authorization` with the value `Bearer <your key>`. Include the word `Bearer`, a space, then the key. Click **Add**.
+5. Under **Request headers**, choose the header name `authorization` from the list (or **Custom header** if it isn't listed; capitalisation of the name doesn't matter). Enter the value `Bearer <your key>`: the word `Bearer`, a space, then the key. Mark it **Required**, then click **Add**.
 6. In a chat, click **+**, then **Connectors**, and make sure `Telekin` is on.
 
 </Steps>
@@ -58,6 +58,8 @@ Start a new chat and paste this:
 > (open a changeset, create or update concepts, then publish). Start now.
 
 Answer as much or as little as you like. Claude asks one question at a time and, every few answers, saves what it learned. Claude may ask your permission before each save; allow it. At the end, ask "What did you record?" to see what went in.
+
+A changeset is just a batch of edits Claude saves in one go.
 
 ## See it remember
 
