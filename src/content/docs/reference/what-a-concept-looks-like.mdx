@@ -1,0 +1,66 @@
+---
+title: What a concept looks like
+description: A short example of a concept in Telekin, and how concepts fit into folders.
+sidebar:
+  order: 4
+---
+
+Telekin keeps your memory as **concepts**: one page per project, system, person or decision. Under the hood the format is **OKF**, the Open Knowledge Format. OKF is an open format for knowledge catalogs: plain Markdown files, each starting with a small block of details written in YAML (a simple "name: value" layout) called frontmatter. Because they are ordinary text files, you can read them in any editor and take them anywhere.
+
+## An example
+
+Sam runs a small bike shop and keeps a concept about the shop's website. Here is the whole file, saved as `/projects/shop-website.md`:
+
+```markdown
+---
+type: project
+title: Shop website
+description: Sam's bike-shop website, how it is built and where it is hosted.
+generated:
+  by: claude-code
+  at: 2026-11-12T09:30:00Z
+---
+
+# Shop website
+
+The site for Sam's bike shop. It lists opening hours, repair prices and a
+booking form for workshop slots.
+
+## How it is built
+
+A static site, rebuilt whenever Sam edits a page. Bookings are sent to the
+[workshop calendar](/systems/workshop-calendar.md).
+
+## Decisions
+
+Sam chose a static site over a shop plugin in the spring, because the
+shop doesn't sell online. See [No online sales](/decisions/no-online-sales.md).
+```
+
+What to notice:
+
+- **Frontmatter** sits between the two `---` lines. `title` and `description` say what the page is. `generated` says which AI wrote the content and when. The server writes `generated` itself, so it can be trusted.
+- **The body** is ordinary Markdown. The links point to other concepts, which is how your AI follows a thread from one idea to the next.
+- **Sources** can be added too, saying where a fact came from.
+
+## Folders
+
+Concepts live in folders, and every folder has an `index.md`: a contents page listing what's inside, each with a one-line summary.
+
+```text
+/
+├─ index.md
+├─ projects/
+│  ├─ index.md
+│  └─ shop-website.md
+├─ systems/
+│  ├─ index.md
+│  └─ workshop-calendar.md
+└─ decisions/
+   ├─ index.md
+   └─ no-online-sales.md
+```
+
+A catalog also has a `log.md` (a dated list of what changed) and an `AGENTS.md` (house rules your AI reads before writing). Your AI looks after all of these for you.
+
+Terms like *catalog* and *changeset* are explained in the [Glossary](/reference/glossary/).

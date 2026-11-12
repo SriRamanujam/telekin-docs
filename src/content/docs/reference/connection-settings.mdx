@@ -1,0 +1,32 @@
+---
+title: Connection settings
+description: The settings any AI app needs to connect to Telekin, and how Telekin picks which catalog to use.
+sidebar:
+  order: 1
+---
+
+Every app that connects to Telekin needs the same few settings, whatever it calls them. Your server URL and key come from your invite.
+
+| Setting | Value | Required |
+|---|---|---|
+| URL | `<server URL>`, which ends in `/mcp` | Yes |
+| Transport | Streamable HTTP (some apps just call it "HTTP") | Yes |
+| `Authorization` header | `Bearer <your key>`: the word `Bearer`, a space, then your key | Yes |
+| `X-OKF-Catalogs` header | One or more catalog names, separated by commas, such as `t01`. Plural: `Catalogs`, not `Catalog` | No. Usually unnecessary |
+| `?catalogs=` query parameter | The same catalog names, added to the end of the URL, such as `<server URL>?catalogs=t01` | No. An alternative to the header |
+
+Treat your key like a password. Don't paste it into chats or share it.
+
+## Which catalog Telekin uses
+
+A catalog is one collection of your notes. Most people have exactly one, and their key already points at it, so they never set a catalog at all.
+
+If you can reach more than one, Telekin picks in this order and stops at the first that names a catalog:
+
+1. The `X-OKF-Catalogs` header.
+2. The `?catalogs=` query parameter.
+3. The default catalog that belongs to your key.
+
+A misspelled header name is silently ignored, so if the wrong catalog is used, check the spelling first. Catalog names are case-sensitive: `T01` does not match `t01`.
+
+Setup steps for each app are under [Connect your AI](/how-to/connect/). If something won't connect, see [Troubleshoot](/how-to/guides/troubleshoot/).

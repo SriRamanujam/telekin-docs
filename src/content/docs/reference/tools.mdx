@@ -1,0 +1,80 @@
+---
+title: What your AI can do
+description: The tools Telekin gives your AI, grouped by what they do for you, in plain words.
+sidebar:
+  order: 2
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+When your AI app connects to Telekin, it gets a set of tools. You don't call them yourself: you talk to your AI, and it picks the right tool. This page lists them so you know what your AI is able to do, and what to expect it to ask permission for.
+
+Telekin runs on an open-source server called okf-mcp, so your AI app may show these names with a prefix such as `okf-mcp`.
+
+<Aside type="caution" title="For the controller: confirm before publishing">
+  Before publishing, confirm this list against the live server's tool list (the founder runs it). Remove this aside once the list is confirmed.
+</Aside>
+
+## Finding things
+
+| Tool | What it does for you |
+|---|---|
+| `search` | Looks for concepts (the pages in your memory) that match some words, and shows a short snippet of each hit. |
+| `get_concept` | Reads one concept in full, or just one section of a long one. |
+| `read_document` | Reads a folder's contents page (`index.md`), the change log (`log.md`) or the catalog's house rules (`AGENTS.md`). |
+| `list_catalogs` | Shows which catalogs your key can reach, and which one is in use right now. |
+
+## Writing (always as a draft first)
+
+Nothing your AI writes is visible until it publishes. Until then it sits in a draft, called a changeset, that you can look over and throw away.
+
+| Tool | What it does for you |
+|---|---|
+| `open_changeset` | Starts a draft. Every change goes into it. |
+| `create_concept` | Adds a new concept to the draft. |
+| `edit_document` | Changes a piece of text in an existing concept, by swapping exact wording. |
+| `replace_body` | Rewrites the whole text of a concept, leaving its details at the top alone. |
+| `set_frontmatter` | Changes one of a concept's descriptive details, such as its title or description. |
+| `add_source` | Records where a fact came from, such as a document or a conversation. |
+| `remove_source` | Removes a recorded source that is no longer cited. |
+| `log` | Adds a dated line to the catalog's change log. |
+| `index` | Lists a concept on its folder's contents page. |
+| `pending_changes` | Shows exactly what the draft would change, line by line. |
+| `lint` | Checks the draft, or the whole catalog, for mistakes such as broken links. |
+| `publish` | Makes the draft real, with a short message saying what changed. |
+| `discard` | Throws away some or all of a draft. Published concepts are untouched. |
+| `list_changesets` | Finds your open drafts again, for example after a chat is lost. |
+
+## Tracking where facts came from
+
+| Tool | What it does for you |
+|---|---|
+| `stamp` | Marks a concept as written, or as checked against the real world, with which AI did it and when. |
+| `review` | Records that a concept was reviewed and what was found, and can queue questions about it. |
+| `question` | Queues a question on a concept, such as "is this still true?", without a full review. |
+| `unquestion` | Removes a question once it has been answered. |
+| `open_questions` | Lists every question waiting to be answered. |
+
+## Keeping it tidy
+
+| Tool | What it does for you |
+|---|---|
+| `sprawl` | Finds concepts that have grown too long or change too often, and suggests where to split them. |
+| `links_report` | Finds broken links, orphan concepts that nothing links to, and places that mention a concept without linking to it. |
+| `oldest` | Lists the concepts that have gone longest without being checked. |
+| `move_concept` | Moves or renames a concept and fixes every link to it. |
+| `split_concept` | Carves one section out of a long concept into a new concept of its own. |
+| `delete_concept` | Deletes a concept. It refuses while anything still links to it. |
+
+## History
+
+| Tool | What it does for you |
+|---|---|
+| `history` | Shows every past version of a document: what changed, which AI changed it, and when. |
+| `revert` | Brings back an earlier version, as a new draft that you publish like any other change. |
+
+Because every publish is kept in the history, an unwanted change can be undone. See [Review, undo and export](/how-to/guides/review-undo-export/).
+
+## How tools are used
+
+Whether your AI app asks you before each tool runs depends on the app. Most ask the first time and let you choose "always allow".

@@ -1,0 +1,42 @@
+---
+title: Glossary
+description: Plain-language meanings for the terms Telekin uses.
+sidebar:
+  order: 5
+---
+
+## Catalog
+
+Your whole collection of notes in Telekin. Most people have one. It is a set of folders and Markdown files.
+
+## Concept
+
+One page in a catalog, about one project, system, person or decision. Concepts link to each other. See [What a concept looks like](/reference/what-a-concept-looks-like/).
+
+## Changeset (draft)
+
+A set of changes your AI has prepared but not yet made real. Nothing in a changeset is visible to anyone, including your other AIs, until it is published. You can look at it or throw it away.
+
+## Publish
+
+Turn a changeset into the real catalog. Every publish is saved with a short message, so it can be found and undone later.
+
+## Provenance
+
+Where a fact came from: which AI wrote it, when, and from what source (a document, a conversation, a check against the real thing).
+
+## MCP
+
+The Model Context Protocol, an open standard that lets an AI app use outside tools. Telekin works through it. If an app supports MCP servers, it can connect to Telekin.
+
+## Connector
+
+What some apps (Claude, for example) call a connection to an MCP server. Adding Telekin to such an app means adding a custom connector.
+
+## OKF
+
+The Open Knowledge Format: plain Markdown files with a small YAML block of details at the top. It is the format Telekin stores your memory in.
+
+## okf-mcp
+
+The open-source server that Telekin runs on. It speaks MCP to your AI app and stores your catalog as OKF. You will see its name in some setup commands and tool names.
