@@ -1,0 +1,57 @@
+---
+title: Connect Cursor
+description: Add Telekin to Cursor by editing its mcp.json file.
+sidebar:
+  order: 4
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import LastChecked from '../../../../components/LastChecked.astro';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+You'll need: your server URL and key (from your invite).
+
+<Waitlist />
+
+## Add the server
+
+Cursor reads its servers from a file called `mcp.json`. There are two places for it:
+
+- `~/.cursor/mcp.json` is the **global** file: the server is available in every project.
+- `.cursor/mcp.json` inside a project is the **per-project** file: the server is available only there.
+
+<Steps>
+
+1. Create or edit one of those files so it contains this, with your own server URL and key. If the file already has other servers, add only the `"telekin"` entry inside `mcpServers`.
+
+   ```json
+   {
+     "mcpServers": {
+       "telekin": {
+         "url": "<server URL>",
+         "headers": {
+           "Authorization": "Bearer <your key>"
+         }
+       }
+     }
+   }
+   ```
+
+2. Restart Cursor.
+3. Open **Settings, then MCP**. You should see `telekin` shown as connected, with its tools listed.
+
+</Steps>
+
+Menu names move around, so if you can't find the MCP page, search Cursor's settings for "MCP".
+
+## Check it works
+
+In a Cursor chat, ask: **"What tools do you have from Telekin?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet. Cursor may ask your approval before using a tool.
+
+If it won't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer ` (with a space).
+
+## Undo it
+
+Delete the `"telekin"` entry from the `mcp.json` file you edited and restart Cursor.
+
+<LastChecked date="2026-11-12" />

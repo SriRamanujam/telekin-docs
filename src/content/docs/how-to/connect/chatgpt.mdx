@@ -1,0 +1,23 @@
+---
+title: Connect ChatGPT (not yet)
+description: ChatGPT can't connect to Telekin yet, and what to use in the meantime.
+sidebar:
+  order: 90
+---
+
+import LastChecked from '../../../../components/LastChecked.astro';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+ChatGPT can't connect to Telekin yet.
+
+<Waitlist />
+
+## Why not
+
+ChatGPT's custom connectors only accept OAuth sign-in. Telekin uses keys today, and OAuth support is planned.
+
+## Meanwhile
+
+Use [Claude](/how-to/connect/claude/) or [Cursor](/how-to/connect/cursor/). Your memory lives in Telekin, not in any one app, so whatever you set up there will be waiting when more apps are supported.
+
+<LastChecked date="2026-11-12" />

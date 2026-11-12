@@ -1,0 +1,54 @@
+---
+title: Connect Claude (web, desktop and mobile)
+description: Add Telekin to claude.ai or Claude Desktop as a custom connector, so Claude can remember things between chats.
+sidebar:
+  order: 1
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import LastChecked from '../../../../components/LastChecked.astro';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+You'll need: your server URL and key (from your invite).
+
+<Waitlist />
+
+<Aside type="caution" title="Don't see Request headers?">
+  Step 5 uses a field called **Request headers**. Anthropic is rolling it out to a limited set of organizations, so if you don't see it when adding the connector, your account doesn't have it yet. Use [Claude Code](/how-to/connect/claude-code/) or [Cursor](/how-to/connect/cursor/) instead.
+</Aside>
+
+## Add the connector
+
+<Steps>
+
+1. Go to **Customize, then Connectors** (claude.ai/customize/connectors).
+2. Click **+ Add**, then **Add custom connector**.
+3. Name it `Telekin`, paste the **Server URL**, and click **Continue**.
+4. For authentication, choose **No sign in**.
+5. Under **Request headers**, add a header named `Authorization` with the value `Bearer <your key>`. Include the word `Bearer`, a space, then the key. Click **Add**.
+6. In a chat, click **+**, then **Connectors**, and make sure `Telekin` is on.
+
+</Steps>
+
+Claude Desktop uses the same connectors and the same settings page.
+
+A few things worth knowing:
+
+- Free plans allow one custom connector.
+- You can't edit a connector's sign-in settings after adding it. To change the key, remove the connector and add it again.
+- On Team and Enterprise plans, an owner adds the connector for the organization and members then click Connect. Everyone on that connector shares the one key.
+- Claude connects from Anthropic's servers, so the server URL must be reachable from the public internet.
+
+**On your phone:** connectors you add on the web or desktop should appear in the Claude mobile apps after you next sign in. Set it up on the web or desktop first.
+
+## Check it works
+
+In a chat with `Telekin` switched on, ask: **"What tools do you have from Telekin?"** You should see Claude list tools such as search and reading and writing notes. Then ask **"What do you know about me?"**; on an empty memory it will tell you there's nothing yet.
+
+If the connector won't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer ` (with a space). If Claude says it has no tools, make sure the connector is toggled on in this chat (**+**, then **Connectors**).
+
+## Undo it
+
+Go to **Customize, then Connectors**, open `Telekin` and remove it. Nothing is deleted from your memory; it just stops being connected to Claude.
+
+<LastChecked date="2026-11-12" />

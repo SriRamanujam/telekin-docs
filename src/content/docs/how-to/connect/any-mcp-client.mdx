@@ -1,0 +1,42 @@
+---
+title: Connect any other AI app
+description: What any AI app that supports remote MCP servers needs to connect to Telekin.
+sidebar:
+  order: 99
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import LastChecked from '../../../../components/LastChecked.astro';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+You'll need: your server URL and key (from your invite).
+
+<Waitlist />
+
+MCP (Model Context Protocol) is the standard way AI apps talk to tools like Telekin. If your app supports remote MCP servers, it can probably connect. Here is everything it needs.
+
+## What to set
+
+<Steps>
+
+1. **Transport:** "Streamable HTTP" (sometimes just "HTTP").
+2. **URL:** your `<server URL>`, which ends in `/mcp`.
+3. **Header:** the name `Authorization`, with the value `Bearer <your key>`. Include the word `Bearer` and a space before the key.
+
+</Steps>
+
+You don't need a catalog header.
+
+**Where to look in your app:** search its docs for "remote MCP server" or "MCP headers".
+
+If your app only supports OAuth sign-in or local (stdio) servers, it can't connect yet.
+
+## Check it works
+
+Ask your AI: **"What tools do you have from Telekin?"** You should see a list of tools for searching and writing your memory. If it can't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer `.
+
+## Undo it
+
+Remove the server from your app's MCP settings.
+
+<LastChecked date="2026-11-12" />

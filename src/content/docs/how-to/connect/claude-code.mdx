@@ -1,0 +1,51 @@
+---
+title: Connect Claude Code
+description: Add Telekin to Claude Code with one command.
+sidebar:
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import LastChecked from '../../../../components/LastChecked.astro';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+You'll need: your server URL and key (from your invite).
+
+<Waitlist />
+
+For the fuller setup, where Claude Code checks Telekin at the start of every session, see [Claude Code, enhanced](/how-to/connect/claude-code-enhanced/).
+
+## Add the server
+
+<Steps>
+
+1. Run this in a terminal, with your own server URL and key:
+
+   ```bash
+   claude mcp add --transport http --scope user okf-mcp <server URL> \
+     --header "Authorization: Bearer <your key>"
+   ```
+
+   It should print `Added HTTP MCP server okf-mcp with URL: ...` and show the `Authorization` header as `[REDACTED]`.
+
+2. Start `claude` and run `/mcp`. You should see `okf-mcp` listed as connected. Outside a session, `claude mcp list` shows the same.
+
+</Steps>
+
+Keep the name `okf-mcp`: Telekin runs on the open-source okf-mcp server, and the tool names depend on it.
+
+`--scope user` makes the server available in every project. Without it, the server is added only to the directory you ran the command in.
+
+You don't need a catalog header, because your key already points at your catalog. If you ever have access to more than one, the header is `X-OKF-Catalogs` (plural), e.g. `--header "X-OKF-Catalogs: t01"`. A misspelled header is silently ignored.
+
+## Check it works
+
+In a Claude Code session, ask: **"What do you know about me?"** Claude should use the `okf-mcp` tools to search Telekin. On an empty memory it will tell you there's nothing yet. Claude Code asks your permission before using a tool, so approve the request when it appears.
+
+## Undo it
+
+```bash
+claude mcp remove okf-mcp --scope user
+```
+
+<LastChecked date="2026-11-12" />
