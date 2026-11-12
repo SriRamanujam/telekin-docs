@@ -1,8 +1,12 @@
-import { readdirSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 /** Every file under `dir` (recursively) whose name ends with one of `exts`. */
 export function walk(dir, exts) {
+  if (!existsSync(dir)) {
+    console.error(`${dir} not found${dir === 'dist' ? '; run `npx astro build` first' : ''}`);
+    process.exit(1);
+  }
   const out = [];
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);

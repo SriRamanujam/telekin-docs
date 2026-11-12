@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "test": "node --test scripts/*.test.mjs",
     "check": "node scripts/check-noindex.mjs && node scripts/check-private.mjs && node scripts/check-last-checked.mjs",
     "check:testers": "node scripts/check-testers-removable.mjs"
   },

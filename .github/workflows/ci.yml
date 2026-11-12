@@ -3,6 +3,8 @@ on:
   pull_request:
   push:
     branches: [main]
+permissions:
+  contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,6 +19,10 @@ jobs:
         env:
           DENYLIST: ${{ secrets.DOCS_DENYLIST }}
         run: printf '%s\n' "$DENYLIST" > .denylist
+      - run: npm test
       - run: npx astro build
-      - run: npm run check
+      - name: Run the content checks
+        env:
+          REQUIRE_DENYLIST: '1'
+        run: npm run check
       - run: npm run check:testers

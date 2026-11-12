@@ -1,9 +1,29 @@
 // @ts-check
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightLinksValidator from 'starlight-links-validator';
 import { SITE_URL, WAITLIST_URL } from './src/site-config.mjs';
+import { walk } from './scripts/lib.mjs';
+
+// NO SITEMAP until launch. Starlight adds @astrojs/sitemap itself unless an
+// integration with that name is present, so this no-op takes its place, and
+// the build-done hook strips the <link rel="sitemap"> tag Starlight adds.
+// To undo at launch: delete this constant and remove it from `integrations`.
+const noSitemap = {
+  name: '@astrojs/sitemap',
+  hooks: {
+    'astro:build:done': ({ dir }) => {
+      const root = fileURLToPath(dir);
+      for (const file of walk(root, ['.html'])) {
+        const html = readFileSync(file, 'utf8');
+        const out = html.replace(/<link rel="sitemap"[^>]*>/g, '');
+        if (out !== html) writeFileSync(file, out);
+      }
+    },
+  },
+};
 
 // The tester section is deleted at launch; the sidebar must not break when it is.
 const hasTesters = existsSync('./src/content/docs/testers');
@@ -11,6 +31,7 @@ const hasTesters = existsSync('./src/content/docs/testers');
 export default defineConfig({
   site: SITE_URL,
   integrations: [
+    noSitemap,
     starlight({
       title: 'Telekin',
       description: 'A memory your AIs share, and you own.',

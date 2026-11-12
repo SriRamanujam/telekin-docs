@@ -14,4 +14,5 @@ if (!existsSync('dist/robots.txt')) {
 } else if (!/^Disallow: \/\s*$/m.test(readFileSync('dist/robots.txt', 'utf8'))) {
   failures.push('dist/robots.txt does not contain "Disallow: /"');
 }
+if (existsSync('dist/sitemap-index.xml')) failures.push('dist/sitemap-index.xml exists; the sitemap is disabled until launch');
 report('noindex', failures);
