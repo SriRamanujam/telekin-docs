@@ -1,6 +1,23 @@
 ---
 title: Telekin
 description: A memory your AIs share, and you own.
+template: splash
+hero:
+  tagline: A memory your AIs share, and you own.
+  actions:
+    - text: Start here
+      link: /start/
+      icon: right-arrow
+    - text: Connect your AI
+      link: /how-to/connect/
+      variant: minimal
 ---
 
-Welcome.
+import Waitlist from '../../components/Waitlist.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="New here?">
+  Begin with the [Start here](/start/) section, then connect your AI.
+</Aside>
+
+<Waitlist />
