@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-Every app that connects to Telekin needs the same few settings, whatever it calls them. Your server URL and key come from your invite.
+Every app that connects to Telekin needs the same few settings, whatever it calls them. Your server URL and your key or sign-in code come from your invite. Telekin accepts both ways of signing in at the same URL.
 
 | Setting | Value | Required |
 |---|---|---|
@@ -16,6 +16,21 @@ Every app that connects to Telekin needs the same few settings, whatever it call
 | `?catalogs=` query parameter | The same catalog names, added to the end of the URL, such as `<server URL>?catalogs=t01` | No. An alternative to the header |
 
 Treat your key like a password. Don't paste it into chats or share it.
+
+## OAuth sign-in
+
+Apps that only accept OAuth (Claude on the web and desktop, and ChatGPT) use a sign-in code instead of a header.
+
+| Setting | Value |
+|---|---|
+| URL | `<server URL>`, which ends in `/mcp` (the same as with a key) |
+| Authentication | OAuth. Leave any client ID and client secret empty |
+| Sign-in code | `<sign-in code>`, typed on Telekin's sign-in page in your browser |
+| Use | Single use: one code, one app connection |
+| Lifetime | Expires unused after 24 hours |
+| Sign-in time limit | Finish within 10 minutes of the page opening; five wrong codes end it |
+
+Each connection needs its own code, and reconnecting after a disconnect takes a new one. A connected app stays connected as long as it's used regularly. The `Authorization` and catalog settings above apply to keys; with a sign-in code, the approval page tells you which catalog is granted.
 
 ## Which catalog Telekin uses
 

@@ -9,13 +9,27 @@ import { Steps } from '@astrojs/starlight/components';
 import LastChecked from '../../../../components/LastChecked.astro';
 import Waitlist from '../../../../components/Waitlist.astro';
 
-You'll need: your server URL and key (from your invite).
+You'll need: your server URL, and either a key or a sign-in code (from your invite).
 
 <Waitlist />
 
 MCP (Model Context Protocol) is the standard way AI apps talk to tools like Telekin. If your app supports remote MCP servers, it can probably connect. Here is everything it needs.
 
 ## What to set
+
+Telekin accepts two ways to sign in, side by side, at the same URL. Use whichever your app supports.
+
+**If your app supports remote MCP servers with OAuth, use a sign-in code.**
+
+<Steps>
+
+1. **URL:** your `<server URL>`, which ends in `/mcp`.
+2. **Authentication:** choose OAuth, and leave any client ID and client secret fields empty.
+3. The app opens Telekin's sign-in page in a browser. Type your `<sign-in code>`, choose **Continue**, then **Approve** on the next page. A sign-in code works once, for one connection, and expires unused after 24 hours.
+
+</Steps>
+
+**Otherwise, use a key in a header.**
 
 <Steps>
 
@@ -27,13 +41,13 @@ MCP (Model Context Protocol) is the standard way AI apps talk to tools like Tele
 
 You don't need a catalog header.
 
-**Where to look in your app:** search its docs for "remote MCP server" or "MCP headers".
+**Where to look in your app:** search its docs for "remote MCP server", "MCP headers" or "OAuth".
 
-If your app only supports OAuth sign-in or local (stdio) servers, it can't connect yet.
+If your app only supports local (stdio) servers, it can't connect.
 
 ## Check it works
 
-Ask your AI: **"What tools do you have from Telekin?"** You should see a list of tools for searching and writing your memory. If it can't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer `.
+Ask your AI: **"What tools do you have from Telekin?"** You should see a list of tools for searching and writing your memory. If it can't connect, check that the URL ends in `/mcp`, and, if you use a key, that the header value starts with `Bearer `.
 
 ## Undo it
 

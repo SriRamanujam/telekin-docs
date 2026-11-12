@@ -33,6 +33,14 @@ The Model Context Protocol, an open standard that lets an AI app use outside too
 
 What some apps (Claude, for example) call a connection to an MCP server. Adding Telekin to such an app means adding a custom connector.
 
+## Sign-in code
+
+A one-time code for connecting an app that signs in with OAuth, such as Claude on the web or ChatGPT. It works once, for one app connection, and expires unused after 24 hours. You type it on Telekin's sign-in page. Developer tools use a key instead.
+
+## OAuth
+
+A standard way for an app to be signed in without you handing it a password or key. The app sends you to a sign-in page in your browser, you approve it, and you're sent back. In Telekin, the page asks for a sign-in code. Claude on the web and ChatGPT only connect this way.
+
 ## OKF
 
 The Open Knowledge Format: plain Markdown files with a small YAML block of details at the top. It is the format Telekin stores your memory in.

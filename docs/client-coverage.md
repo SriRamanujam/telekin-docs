@@ -8,7 +8,7 @@ Goal: connect to a remote MCP server over streamable HTTP, authenticating with `
 
 | Client | Streamable HTTP | Custom `Authorization` header | Writes | Verdict | Docs URL | Checked |
 |---|---|---|---|---|---|---|
-| claude.ai (web) | Yes (Advanced > Transport; URL ending `/sse` selects SSE) | Yes, "Request headers" in the Add custom connector dialog. BETA, limited organizations | Yes (approval prompts, per-tool block) | Full page, with beta caveat | https://claude.com/docs/connectors/custom/remote-mcp | 2026-11-12 |
+| claude.ai (web) | Yes (Advanced > Transport; URL ending `/sse` selects SSE) | Request headers (BETA, limited organizations) not used; connects via OAuth (Telekin supports it as of 2026-11-12) | Yes (approval prompts, per-tool block) | Full page, OAuth sign-in code | https://claude.com/docs/connectors/custom/remote-mcp | 2026-11-12 |
 | Claude Desktop | Same connectors as claude.ai | Same as claude.ai | Same | Full page (share with claude.ai) | https://claude.com/docs/connectors/custom/remote-mcp | 2026-11-12 |
 | Claude mobile (iOS/Android) | Connectors added on web/desktop appear in the app; adding on mobile is "beta" per support article | Set on web/desktop, not in the app | Same | No own page; one note on the claude.ai page | https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp | 2026-11-12 |
 | Claude Code | Yes (`--transport http`; SSE deprecated) | Yes, `--header` / `-H` flag, or `headers` key in `.mcp.json` | Yes (permission prompts) | Full page | https://code.claude.com/docs/en/mcp | 2026-11-12 |
@@ -16,7 +16,7 @@ Goal: connect to a remote MCP server over streamable HTTP, authenticating with `
 | VS Code (GitHub Copilot) | Yes (`"type": "http"`; falls back to SSE) | Yes, `headers` object; `inputs` for the secret | Yes, tool approvals apply | Full page | https://code.visualstudio.com/docs/agents/reference/mcp-configuration | 2026-11-12 |
 | Windsurf | Yes (docs: stdio, Streamable HTTP, SSE) | Yes, `headers` object in `mcp_config.json` | Not restricted in docs (unconfirmed wording) | Full page, with file-location caveat | https://docs.devin.ai/windsurf/plugins/cascade/mcp | 2026-11-12 |
 | OpenAI Codex CLI | Yes (`url` servers; section is about streamable HTTP) | Yes, `bearer_token_env_var` sends `Authorization: Bearer`; also `http_headers` | Not restricted in docs (unconfirmed wording) | Full page | https://learn.chatgpt.com/docs/extend/mcp?surface=cli | 2026-11-12 |
-| ChatGPT | Yes (SSE and streaming HTTP) | No. Auth is OAuth, none, or either; custom API keys/headers not supported | Yes, with confirmation | Not-yet page | https://developers.openai.com/api/docs/guides/custom-mcp-server | 2026-11-12 |
+| ChatGPT | Yes (SSE and streaming HTTP) | No. Auth is OAuth, none, or either; custom API keys/headers not supported. Connects via OAuth (Telekin supports it as of 2026-11-12) | Yes, with confirmation | Full page, OAuth sign-in code | https://developers.openai.com/api/docs/guides/custom-mcp-server | 2026-11-12 |
 | Gemini CLI | Yes (`httpUrl`) | Yes, `headers` in `settings.json` or `--header` / `-H` | Not restricted in docs | Full page, with plan caveat | https://geminicli.com/docs/tools/mcp-server/ | 2026-11-12 |
 | Zed | Unconfirmed (page does not name transports) | Yes, `headers` in `context_servers` | Tool actions confirmed by default | Leave out (unconfirmed) | https://zed.dev/docs/ai/mcp | 2026-11-12 |
 | Cline | Yes (`"type": "streamableHttp"`) | Yes, `headers` in `cline_mcp_settings.json`; `--header` in CLI | Not restricted (`autoApprove` list available) | Full page | https://docs.cline.bot/mcp/configuring-mcp-servers | 2026-11-12 |
@@ -24,7 +24,7 @@ Goal: connect to a remote MCP server over streamable HTTP, authenticating with `
 | JetBrains AI Assistant | Yes (Streamable HTTP, SSE) | Unconfirmed (docs show only `url`; no headers field documented) | Unconfirmed | Leave out (unconfirmed) | https://www.jetbrains.com/help/ai-assistant/mcp.html | 2026-11-12 |
 | LM Studio | Unconfirmed (page says only "local and remote") | Yes (example uses `headers` with `Authorization`) | Unconfirmed | Leave out (unconfirmed) | https://lmstudio.ai/docs/app/mcp | 2026-11-12 |
 
-Suggested pages: full pages for claude.ai (also covering Claude Desktop and a note on mobile), Claude Code, Cursor, VS Code, Windsurf, Codex CLI, Gemini CLI, Cline. Not-yet page for ChatGPT. Everything else is under "Unconfirmed: for the founder".
+Suggested pages: full pages for claude.ai (also covering Claude Desktop and a note on mobile), Claude Code, Cursor, VS Code, Windsurf, Codex CLI, Gemini CLI, Cline. Full page for ChatGPT (OAuth). Everything else is under "Unconfirmed: for the founder".
 
 ---
 
@@ -36,12 +36,12 @@ Sources: https://claude.com/docs/connectors/custom/remote-mcp and https://suppor
 - Team and Enterprise: an Owner adds the connector under Organization settings > Connectors (Add > Custom; choose Web if asked). Members then click Connect. Enterprise members with a custom role that includes managing libraries can also add it. Everyone on that connector shares the one credential.
 - Claude connects from Anthropic's cloud, so the server must be reachable from the public internet.
 - Write tools are not blocked. The user approves tool calls, can choose "Always allow", and can block individual tools under Customize > Connectors.
-- IMPORTANT CAVEAT: the docs say "Request header authentication is in beta and available to a limited set of organizations. If you don't see the Request headers section in the Add custom connector dialog, your organization doesn't have access yet." Pages must say this plainly.
+- Superseded 2026-11-12: Telekin now supports OAuth, so the Telekin page uses OAuth with a sign-in code, not Request headers, and the beta caveat no longer applies to it. For reference, the docs say "Request header authentication is in beta and available to a limited set of organizations. If you don't see the Request headers section in the Add custom connector dialog, your organization doesn't have access yet." Pages must say this plainly.
 - Header names are reviewed by Anthropic; `authorization` and `x-api-key` are in the offered list. Up to four headers. Claude sends the value exactly as typed, so the value must include `Bearer `.
 - Authentication settings cannot be changed after adding. To change the key, remove the connector and add it again.
 - Transport: Advanced > Transport; a URL ending in `/sse` selects the older SSE transport. Streamable HTTP is the default for a normal URL (the docs say to change Transport only if the server's docs say to).
 
-Steps (Free, Pro, Max, Ultra):
+Steps for the Request-headers (key) route, no longer used by the Telekin page (the OAuth route replaces steps 4 and 5 with: choose OAuth if asked, leave client ID/secret empty, then sign in with a sign-in code in the browser):
 
 1. Go to Customize > Connectors.
 2. Select Add, then Add custom connector.
@@ -281,7 +281,7 @@ Source: https://docs.cline.bot/mcp/configuring-mcp-servers (checked 2026-11-12)
 
 ---
 
-## ChatGPT (not yet)
+## ChatGPT (connects via OAuth)
 
 Source: https://developers.openai.com/api/docs/guides/custom-mcp-server (checked 2026-11-12); plus a search-result summary of https://developers.openai.com/plugins/build/auth (not read directly).
 
@@ -289,7 +289,7 @@ Source: https://developers.openai.com/api/docs/guides/custom-mcp-server (checked
 - Authentication options: OAuth, no authentication, or OAuth-or-no-authentication. The custom-server page does not mention custom headers or API keys. The auth page summary says ChatGPT cannot present custom API keys. Conclusion: no way to send a static `Authorization` header; needs OAuth.
 - Write actions need confirmation by default (tools lacking a `readOnlyHint` annotation are treated as writes).
 - Which plans include custom MCP servers: not stated on the page (UNCONFIRMED). Workspace permissions and Lockdown can restrict it.
-- Reason for the "not yet" page: needs OAuth, which Telekin does not offer today (OAuth is "planned", no date).
+- Update 2026-11-12: ChatGPT needs OAuth, and Telekin now supports OAuth with single-use sign-in codes, so the page is a full connect page. Menu names are hedged ("look for") on the page.
 
 ---
 
@@ -327,7 +327,7 @@ Source: https://lmstudio.ai/docs/app/mcp (checked 2026-11-12)
 
 ## Unconfirmed: for the founder
 
-1. claude.ai Request headers is BETA for a limited set of organizations. Test on your own account whether the section appears on a Free or Pro account; if not, the claude.ai page must be a "not yet" page for those who lack it. This is the single biggest risk to the Claude pages.
+1. (Superseded: the claude.ai page now uses OAuth, so this risk no longer applies.) claude.ai Request headers is BETA for a limited set of organizations. Test on your own account whether the section appears on a Free or Pro account; if not, the claude.ai page must be a "not yet" page for those who lack it. This is the single biggest risk to the Claude pages.
 2. Claude mobile: whether connectors can be added in the iOS/Android apps, or only appear after being set up elsewhere (second-hand search summary only).
 3. Codex CLI: transport name for `url` servers, and `env_http_headers` syntax.
 4. Gemini CLI: whether Antigravity CLI uses the same config after the June 2026 replacement for unpaid users.

@@ -1,23 +1,49 @@
 ---
-title: Connect ChatGPT (not yet)
-description: ChatGPT can't connect to Telekin yet, and what to use in the meantime.
+title: Connect ChatGPT
+description: Add Telekin to ChatGPT as a custom MCP server and sign in with a one-time code, so ChatGPT can remember things between chats.
 sidebar:
-  order: 90
+  order: 5
 ---
 
+import { Steps } from '@astrojs/starlight/components';
 import LastChecked from '../../../../components/LastChecked.astro';
 import Waitlist from '../../../../components/Waitlist.astro';
 
-ChatGPT can't connect to Telekin yet.
+You'll need: your server URL and a sign-in code (from your invite).
 
 <Waitlist />
 
-## Why not
+A sign-in code is a one-time code that lets one app connect. It works once, for one connection, and expires unused after 24 hours. Connecting ChatGPT and Claude takes two codes, and reconnecting later takes a new one.
 
-ChatGPT's custom connectors only accept OAuth, a sign-in-with-your-account flow. Telekin uses keys today, and OAuth support is planned.
+## Add the server
 
-## Meanwhile
+Custom MCP servers are added in ChatGPT on the web. Menu names change, so look for them rather than expecting these exact words.
 
-Use [Claude](/how-to/connect/claude/) or [Cursor](/how-to/connect/cursor/). Your memory lives in Telekin, not in any one app, so whatever you set up there will be waiting when more apps are supported.
+<Steps>
+
+1. In ChatGPT on the web, look for **Plugins** (or a similar place for custom MCP servers).
+2. Create a new one. Give it a name such as `Telekin`, an optional description, and paste your **Server URL**.
+3. For authentication, choose **OAuth**. Leave any client ID or client secret fields empty.
+4. Create it, then install it.
+5. ChatGPT opens Telekin's sign-in page in your browser. It names the app that's connecting. Type your sign-in code and choose **Continue**.
+6. The next page states what will be granted: read or write access, which memory (catalog), and the name your changes are recorded under. Choose **Approve**. Your browser returns to ChatGPT, now connected. (**Deny** leaves your code unused.)
+
+</Steps>
+
+Finish the sign-in within 10 minutes of the page opening, and don't mistype the code five times, or it ends and you start again from ChatGPT. Once connected, ChatGPT stays connected on its own as long as you use it regularly.
+
+Two things may get in your way. Which ChatGPT plans include custom MCP servers isn't confirmed, and if you're in a workspace, an admin can restrict adding them.
+
+## Check it works
+
+In a new chat, ask: **"What tools do you have from Telekin?"** You should see ChatGPT list tools for searching and saving to your memory. Then ask **"What do you know about me?"**; on an empty memory it will tell you there's nothing yet.
+
+ChatGPT asks for your confirmation before each change it makes to your memory. That is expected. Approve the ones you want.
+
+If it won't connect, check that the URL ends in `/mcp`. If the sign-in page says your code didn't work, see [Troubleshoot](/how-to/guides/troubleshoot/).
+
+## Undo it
+
+Remove the Telekin server in ChatGPT's settings for custom servers. Nothing is deleted from your memory; it just stops being connected to ChatGPT. The person running your Telekin server can also revoke the connection. To connect again later, you'll need a new sign-in code.
 
 <LastChecked date="2026-11-12" />
