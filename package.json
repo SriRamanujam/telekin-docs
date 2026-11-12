@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/starlight": "0.42.10",
     "astro": "7.4.11",
+    "forminit": "^0.2.4",
     "sharp": "^0.35.3",
     "starlight-links-validator": "0.27.0"
   },

@@ -52,7 +52,7 @@ export default defineConfig({
         { label: 'Explanation', items: [{ autogenerate: { directory: 'explanation' } }] },
         { label: 'FAQ', link: '/faq/' },
         ...(hasTesters ? [{ label: 'For testers', items: [{ autogenerate: { directory: 'testers' } }] }] : []),
-        { label: 'Join the waitlist', link: WAITLIST_URL, attrs: { target: '_blank' } },
+        { label: 'Join the waitlist', link: WAITLIST_URL },
       ],
     }),
   ],

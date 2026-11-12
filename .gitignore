@@ -22,3 +22,8 @@ pnpm-debug.log*
 .wrangler/
 .denylist
 .testers-check-*/
+
+# local agent tooling
+.agents/
+.claude/
+skills-lock.json
