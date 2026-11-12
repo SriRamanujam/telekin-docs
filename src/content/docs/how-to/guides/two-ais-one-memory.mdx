@@ -1,0 +1,30 @@
+---
+title: Use two AIs on one memory
+description: Connect a second AI app to the same Telekin memory and watch what one learns show up in the other.
+sidebar:
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Your memory lives in Telekin, not in any one app. Connect a second app and both see the same memory.
+
+## Connect a second AI
+
+Pick another app from [Connect your AI](/how-to/connect/) and follow its guide. Use the **same server URL and the same key** you used for the first one. You don't need anything new.
+
+## Try it
+
+<Steps>
+
+1. In your first AI (say Claude), tell it something worth remembering: **"Remember that I prefer short, plain replies and that I'm working on the Orchard project this month."**
+2. Ask it to save the fact if it hasn't, and wait for it to say it has.
+3. Open your second AI (say Cursor) and ask: **"What do you know about me?"**
+
+</Steps>
+
+The second AI should find the same facts and use them, even though you never told it.
+
+## Good to know
+
+Both AIs write to the same memory, so either one can add to or change what the other saved. Each change records which AI made it. To see who changed what, use [Review, undo and export](/how-to/guides/review-undo-export/).

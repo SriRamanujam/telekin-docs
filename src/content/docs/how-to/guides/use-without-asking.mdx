@@ -1,0 +1,31 @@
+---
+title: Get your AI to use Telekin without being asked
+description: Add one line to your AI's custom instructions so it checks Telekin on its own, plus a few habits that help.
+sidebar:
+  order: 1
+---
+
+Connecting Telekin gives your AI the tools to use it. It doesn't always think to. This page makes it check Telekin by itself.
+
+## Add one line
+
+Add this to your AI's custom instructions:
+
+> I have a knowledge catalog (Telekin) connected that holds long-term
+> context about me. Search it before answering whenever I mention a project, system,
+> person or problem, and use what you find openly. When we establish
+> something worth remembering, record it there.
+
+Where it goes depends on the app. Menu names move around, so search the app's settings for "preferences" or "rules" if you can't find them:
+
+- **Claude (web, desktop and mobile):** your profile's personal preferences, under Settings.
+- **Cursor:** User Rules, under Settings.
+- **Claude Code:** don't use this line. Follow [Connect Claude Code, enhanced](/how-to/connect/claude-code-enhanced/), which sets up the instructions and a startup check for you.
+
+## Habits that help
+
+- **Name the project or system in your question.** "Why is the billing service slow?" gives your AI something to search for. "Why is it slow?" doesn't.
+- **Say "check Telekin" when it misses.** If it answers as if it knows nothing, ask it to look. Then it has found what it needs for the rest of the chat.
+- **Start a fresh chat when a long one drifts.** Long chats can lose track of their instructions. A new chat starts clean and searches Telekin again.
+
+If your AI still never touches Telekin, see [Troubleshoot](/how-to/guides/troubleshoot/).
