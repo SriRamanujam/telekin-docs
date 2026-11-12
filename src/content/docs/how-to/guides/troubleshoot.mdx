@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+import { CONTACT_URL } from '../../../../site-config.mjs';
+
 ## The connector won't connect
 
 Check that the URL ends in `/mcp` and that the header value starts with `Bearer ` (with a space). In Claude on the web, the header name is `authorization`, chosen from the list (or **Custom header**), marked **Required**, with the value `Bearer <your key>`.
@@ -27,4 +29,4 @@ If you ever have access to more than one catalog, the header that picks them is 
 
 ## Anything else
 
-Send us a message with a screenshot. Leave your key out of the screenshot.
+<a href={CONTACT_URL}>Send us a message</a> with a screenshot. Leave your key out of the screenshot.

@@ -10,7 +10,7 @@ The short version: most AI memory is either locked inside one app, or written as
 What Telekin is strictest about is how safely an AI can write:
 
 - **Drafts before anything goes live.** An AI's edits sit in a draft until it publishes them, and you can look first.
-- **Provenance.** Each concept records which AI wrote it, when, and from what source.
+- **Provenance.** Each concept records who wrote it, when, and from what source.
 - **History.** Every publish is kept, and any of it can be reverted.
 
 ## Built-in AI memory
@@ -30,14 +30,15 @@ Hooking an AI up to an Obsidian vault works, and it's a fine setup if you only u
 
 ## Other Markdown-over-MCP tools
 
-Other tools also keep Markdown notes and expose them to AI apps over MCP. Some are more polished than Telekin today, and some work in more places. Where Telekin is deliberate is the write path: drafts first, provenance on every fact, and history you can revert. If you already use such a tool, compare how each one lets an AI change your notes, and how you would undo it.
+Other tools also keep Markdown notes and expose them to AI apps over MCP, the standard way AI apps connect to tools like Telekin. Some are more polished than Telekin today, and some work in more places. Where Telekin is deliberate is the write path: drafts first, provenance on every fact, and history you can revert. If you already use such a tool, compare how each one lets an AI change your notes, and how you would undo it.
+
+**Phones:** Claude's mobile apps should pick up a connector you set up on the web or desktop. Other mobile apps aren't confirmed yet.
 
 ## What's planned
 
 Telekin is early, and some things other tools have are not here yet:
 
-- **OAuth sign-in** is planned. Today Telekin uses a key, which is why apps that only accept OAuth sign-in, such as ChatGPT, can't connect yet.
-- **Mobile support** beyond what Claude's own apps provide is not confirmed yet.
+- **OAuth sign-in** (signing in with an account rather than a key) is planned. Today Telekin uses a key, which is why apps that only accept OAuth, such as ChatGPT, can't connect yet.
 - **Signup, teams, billing and a web viewer** are planned too.
 
 For what works today, see [Connect your AI](/how-to/connect/). The best way to compare is to [try it](/start/first-15-minutes/): most people notice within a day or two whether their AI feels like it already knows them.

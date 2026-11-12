@@ -9,7 +9,7 @@ Telekin is a memory that your AI apps share. This page explains the ideas behind
 
 ## The idea: one memory, many AIs
 
-Most AI apps remember only what you told that app. Telekin keeps your memory in one place that sits outside any single app. Think of it as a root with leaves: the memory is the root, and each AI app you connect (Claude, Claude Code, Cursor and others) is a leaf that reads from it and writes back to it. Tell one AI something and the others can know it too.
+Most AI apps remember only what you told that app. Telekin keeps your memory in one place that sits outside any single app. Think of it as a hub with spokes: the memory is the hub, and each AI app you connect (Claude, Claude Code, Cursor and others) is a spoke that reads from it and writes back to it. Tell one AI something and the others can know it too.
 
 The apps reach Telekin through MCP, the Model Context Protocol, an open standard that lets an AI app use outside tools. See [Connect your AI](/how-to/connect/) for the apps that work today.
 
@@ -23,7 +23,7 @@ Every change starts as a draft, called a changeset. Your AI collects its edits i
 
 ## Provenance
 
-Each concept records which AI wrote it and when, and can list the sources a fact came from: a document, a conversation, a check against the real thing. When two AIs share one memory, that matters: you can tell who said what, and how far to trust it. Concepts can also carry open questions, such as "is this still true?", for someone to answer later.
+Each concept records who wrote it and when, and can list the sources a fact came from: a document, a conversation, a check against the real thing. When two AIs share one memory, that matters: you can see who wrote what, and how far to trust it. Concepts can also carry open questions, such as "is this still true?", for someone to answer later.
 
 ## History
 

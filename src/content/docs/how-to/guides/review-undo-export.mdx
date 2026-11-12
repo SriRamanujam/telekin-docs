@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+import { CONTACT_URL } from '../../../../site-config.mjs';
+
 You don't need a special screen for any of this. You ask your AI, and it uses Telekin's tools.
 
 ## Review what was saved
@@ -14,7 +16,7 @@ Ask:
 - **"What did you record in Telekin today?"**
 - **"Show me the history of `<concept>`."** Replace `<concept>` with the name of the item you care about, such as a project.
 
-Telekin keeps a history of every change, including which AI made it.
+Telekin keeps a history of every change, with a message and the time it was made.
 
 ## Undo a change
 
@@ -24,4 +26,4 @@ Your AI looks the change up in the history and reverts it. The old version comes
 
 ## Export everything
 
-Ask us for a full export. You'll get your whole memory as plain Markdown files, which you can read in any text editor. Self-serve export is planned.
+<a href={CONTACT_URL}>Ask us</a> for a full export. You'll get your whole memory as plain Markdown files, which you can read in any text editor. Self-serve export is planned.

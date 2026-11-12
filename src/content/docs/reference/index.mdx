@@ -1,7 +1,19 @@
 ---
 title: Reference
+description: "Plain facts to look up: the settings, the tools your AI can use, prompts and terms."
 sidebar:
+  label: Overview
   order: 0
 ---
 
-Plain facts to look up: the tools your AI can use, the settings, and the limits. It describes what exists and does not teach.
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Plain facts to look up: the settings, the tools your AI can use, prompts and terms.
+
+<CardGrid>
+  <LinkCard title="Connection settings" href="/reference/connection-settings/" />
+  <LinkCard title="What your AI can do" href="/reference/tools/" />
+  <LinkCard title="What a concept looks like" href="/reference/what-a-concept-looks-like/" />
+  <LinkCard title="Prompt library" href="/reference/prompt-library/" />
+  <LinkCard title="Glossary" href="/reference/glossary/" />
+</CardGrid>

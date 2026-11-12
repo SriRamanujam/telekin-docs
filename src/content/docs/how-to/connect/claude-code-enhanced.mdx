@@ -58,6 +58,8 @@ reminds you of it at the start of every session.
 - Write with the server's tools (`create_concept`, `edit_document`,
   `replace_body`, `set_frontmatter`). Never rebuild whole files, and never
   type timestamps; the server writes them.
+- Pass `by: "claude-code/<your model id>"` to `create_concept`, `stamp`,
+  `review` and `split_concept`, so Telekin records that Claude Code wrote it.
 - After updating, `publish` with a clear message. I can undo anything with
   `history` and `revert`.
 - Never write secrets (passwords, keys, tokens), or anything my employer

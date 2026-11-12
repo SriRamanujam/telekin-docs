@@ -1,6 +1,7 @@
 ---
 interface Props { date: string }
+import { CONTACT_URL } from '../site-config.mjs';
 const { date } = Astro.props;
 if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`LastChecked: bad date "${date}"`);
 ---
-<p><small>Last checked against this app's official docs: {date}. Menus move around; if a step doesn't match what you see, tell us.</small></p>
+<p><small>Last checked against this app's official docs: {date}. Menus move around; if a step doesn't match what you see, <a href={CONTACT_URL}>tell us</a>.</small></p>

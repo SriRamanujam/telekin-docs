@@ -2,3 +2,5 @@
 // The founder sets the real values at deploy time (see Task 19).
 export const SITE_URL = 'https://docs.example.com';
 export const WAITLIST_URL = 'mailto:waitlist@example.com';
+// Where "ask us" links go. Change this when there is a support address.
+export const CONTACT_URL = WAITLIST_URL;

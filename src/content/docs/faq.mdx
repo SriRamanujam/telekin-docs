@@ -6,6 +6,7 @@ sidebar:
 ---
 
 import Waitlist from '../../components/Waitlist.astro';
+import { CONTACT_URL } from '../../site-config.mjs';
 
 Short answers, each pointing to the page with the full story.
 
@@ -15,7 +16,7 @@ No. Telekin doesn't use your data to train AI models. The AI app you connect has
 
 ## Who can see my data?
 
-You, with your key, and the operator of the Telekin server, who can technically read catalogs. Nobody else has a key to yours. See [Your data](/explanation/your-data/).
+You, with your key, and the operator of the Telekin server, who can technically read catalogs. Nobody else has a key to yours. Everything is encrypted in transit. See [Your data](/explanation/your-data/).
 
 ## What will it cost?
 
@@ -23,7 +24,7 @@ It's free during the private test. Pricing for after the test isn't final; we'll
 
 ## Which AIs work with it?
 
-Claude, Claude Code, Cursor, VS Code, Windsurf, Codex CLI, Gemini CLI and Cline work today. ChatGPT doesn't yet, because it only accepts OAuth sign-in, which is planned. See [Connect your AI](/how-to/connect/).
+Claude, Claude Code, Cursor, VS Code, Windsurf, Codex CLI, Gemini CLI and Cline work today. ChatGPT doesn't yet, because it only accepts OAuth sign-in (signing in with an account rather than a key), which Telekin plans to support. See [Connect your AI](/how-to/connect/).
 
 ## Can I self-host it?
 
@@ -31,11 +32,11 @@ Yes. Telekin runs on okf-mcp, which is open source (AGPL-3.0), and every feature
 
 ## Can I delete everything?
 
-Yes, on request: ask and your memory is deleted, or you get a full copy first. A self-serve export is planned. See [Review, undo and export](/how-to/guides/review-undo-export/) and [Your data](/explanation/your-data/).
+Yes, on request: see [Your data](/explanation/your-data/). You can <a href={CONTACT_URL}>ask us</a> and your memory is deleted, or you get a full copy first. A self-serve export is planned. See also [Review, undo and export](/how-to/guides/review-undo-export/).
 
 ## Does it work on my phone?
 
-Connectors you add to Claude on the web or desktop should show up in Claude's mobile apps, so set it up there first. Support beyond that isn't confirmed yet. See [Connect Claude](/how-to/connect/claude/).
+Connectors you add to Claude on the web or desktop should show up in Claude's mobile apps, so set it up there first. Other apps on phones aren't confirmed yet. See [Connect Claude](/how-to/connect/claude/).
 
 ## Does it work offline?
 
