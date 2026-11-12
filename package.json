@@ -1,0 +1,21 @@
+{
+  "name": "telekin-docs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.42.10",
+    "astro": "7.4.11",
+    "sharp": "^0.35.3",
+    "starlight-links-validator": "0.27.0"
+  },
+  "devDependencies": {
+    "wrangler": "4.160.1"
+  }
+}
