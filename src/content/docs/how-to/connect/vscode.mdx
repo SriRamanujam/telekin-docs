@@ -48,7 +48,7 @@ VS Code reads servers from a file called `mcp.json`. There are two places for it
    }
    ```
 
-2. Start the server from the file (VS Code shows controls on the server entry). The first time it starts, VS Code asks for the value of `telekin-key`. Enter `<your key>` alone, without the word `Bearer`: the file already adds it. VS Code stores it for next time.
+2. Start the server from the file. VS Code usually shows a Start control above the server entry in the file. The first time it starts, VS Code asks for the value of `telekin-key`. Enter `<your key>` alone, without the word `Bearer`: the file already adds it. VS Code stores it for next time. If nothing asks for your key, reload the window.
 
 </Steps>
 
@@ -56,7 +56,7 @@ If you would rather paste the key into the file, replace the value `Bearer ${inp
 
 You can also run **MCP: Add Server** from the Command Palette, choose the HTTP option and enter the URL. That flow doesn't ask for a header, so you'd still edit the JSON afterwards to add the `headers` section.
 
-Some organizations manage Copilot's settings, and their policy may switch MCP servers off. If you can't add the server, ask whoever manages your Copilot.
+Organization settings can restrict MCP access in VS Code. If you can't add the server, ask whoever manages your Copilot.
 
 ## Check it works
 
