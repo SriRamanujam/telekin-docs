@@ -1,5 +1,36 @@
 ---
 title: How Telekin works
+description: "The ideas behind Telekin: one shared memory, concepts, drafts, provenance, history and upkeep."
+sidebar:
+  order: 1
 ---
 
-This page is being written.
+Telekin is a memory that your AI apps share. This page explains the ideas behind it, so you know what to expect.
+
+## The idea: one memory, many AIs
+
+Most AI apps remember only what you told that app. Telekin keeps your memory in one place that sits outside any single app. Think of it as a root with leaves: the memory is the root, and each AI app you connect (Claude, Claude Code, Cursor and others) is a leaf that reads from it and writes back to it. Tell one AI something and the others can know it too.
+
+The apps reach Telekin through MCP, the Model Context Protocol, an open standard that lets an AI app use outside tools. See [Connect your AI](/how-to/connect/) for the apps that work today.
+
+## Concepts
+
+Your memory is made of **concepts**: one page for each project, system, person or decision. A concept is plain text that your AI and you can both read. Concepts link to each other, so an AI that finds your bike-shop website can follow a link to the calendar it uses and the decision behind it, and get a connected picture instead of loose snippets. For an example, see [What a concept looks like](/reference/what-a-concept-looks-like/).
+
+## Drafts
+
+Every change starts as a draft, called a changeset. Your AI collects its edits in the draft and nothing is visible, to you or to your other AIs, until the AI **publishes** it. Until then the draft can be inspected or thrown away. This is why an AI can write freely without leaving half-finished or wrong notes behind.
+
+## Provenance
+
+Each concept records which AI wrote it and when, and can list the sources a fact came from: a document, a conversation, a check against the real thing. When two AIs share one memory, that matters: you can tell who said what, and how far to trust it. Concepts can also carry open questions, such as "is this still true?", for someone to answer later.
+
+## History
+
+Every publish is kept, with a short message saying what changed. You can ask your AI to show the history of any concept and bring an earlier version back. Reverting is itself a draft, so you can look at it before it goes live. Nothing is lost by a bad edit. See [Review, undo and export](/how-to/guides/review-undo-export/).
+
+## Upkeep
+
+A memory that only grows becomes a junk drawer. Telekin has checks your AI can run for concepts that have grown too long, that haven't been looked at in a long time, or that nothing links to, and for broken links. It can also move, rename or split concepts and keep the links working. You can ask for this with a prompt from the [Prompt library](/reference/prompt-library/).
+
+For the full list of what your AI can do, see [What your AI can do](/reference/tools/).
