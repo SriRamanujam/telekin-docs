@@ -40,7 +40,14 @@ export default defineConfig({
         { tag: 'meta', attrs: { name: 'robots', content: 'noindex, nofollow' } },
       ],
       sidebar: [
-        { label: 'Start here', items: [{ autogenerate: { directory: 'start' } }] },
+        {
+          label: 'Start here',
+          items: [
+            // The "what is it" page lives in Explanation; this puts it where newcomers look first.
+            { label: 'What is Telekin?', link: '/explanation/how-telekin-works/' },
+            { autogenerate: { directory: 'start' } },
+          ],
+        },
         {
           label: 'How-to guides',
           items: [
