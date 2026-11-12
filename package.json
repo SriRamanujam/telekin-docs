@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "node scripts/check-noindex.mjs"
+    "check": "node scripts/check-noindex.mjs && node scripts/check-private.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "0.42.10",
