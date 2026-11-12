@@ -1,5 +1,6 @@
 ---
+interface Props { date: string }
 const { date } = Astro.props;
+if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`LastChecked: bad date "${date}"`);
 ---
-
-<p class="last-checked"><em>Last checked: {date}</em></p>
+<p><small>Last checked against this app's official docs: {date}. Menus move around; if a step doesn't match what you see, tell us.</small></p>

@@ -3,21 +3,23 @@ title: Telekin
 description: A memory your AIs share, and you own.
 template: splash
 hero:
-  tagline: A memory your AIs share, and you own.
+  tagline: Never explain yourself twice. Telekin gives every AI you use one shared memory of your world, and you can see and undo everything in it.
   actions:
-    - text: Start here
-      link: /start/
+    - text: Your first 15 minutes
+      link: /start/first-15-minutes/
       icon: right-arrow
     - text: Connect your AI
       link: /how-to/connect/
       variant: minimal
 ---
-
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 import Waitlist from '../../components/Waitlist.astro';
-import { Aside } from '@astrojs/starlight/components';
-
-<Aside type="tip" title="New here?">
-  Begin with the [Start here](/start/) section, then connect your AI.
-</Aside>
 
 <Waitlist />
+
+<CardGrid>
+  <LinkCard title="Start here" description="Connect one AI, let it interview you, and watch it remember." href="/start/first-15-minutes/" />
+  <LinkCard title="Connect your AI" description="Claude, Claude Code, Cursor and more." href="/how-to/connect/" />
+  <LinkCard title="How Telekin works" description="Concepts, drafts, publishing and history." href="/explanation/how-telekin-works/" />
+  <LinkCard title="FAQ" description="Privacy, cost, which AIs work, and more." href="/faq/" />
+</CardGrid>
