@@ -1,0 +1,59 @@
+---
+title: Connect Cline
+description: Add Telekin to Cline by editing its MCP settings.
+sidebar:
+  order: 14
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import LastChecked from '../../../../components/LastChecked.astro';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+You'll need: your server URL and key (from your invite).
+
+<Waitlist />
+
+## Add the server
+
+<Steps>
+
+1. In the Cline panel, click the **MCP Servers** icon in the toolbar, then open the **Configure** tab and choose **Configure MCP Servers**. This opens Cline's settings file.
+2. Make the file contain this, with your own server URL and key. If it already has other servers, add only the `"okf-mcp"` entry inside `mcpServers`.
+
+   ```json
+   {
+     "mcpServers": {
+       "okf-mcp": {
+         "type": "streamableHttp",
+         "url": "<server URL>",
+         "headers": {
+           "Authorization": "Bearer <your key>"
+         },
+         "disabled": false,
+         "autoApprove": []
+       }
+     }
+   }
+   ```
+
+3. Save the file. Telekin should now appear in the MCP Servers list.
+
+</Steps>
+
+Keep `"type": "streamableHttp"` exactly as written. If `type` is left out, Cline assumes an older style of server and won't connect. Leave `autoApprove` empty, so Cline asks before using a tool. (Tools you put in that list skip the approval step.)
+
+The **Remote Servers** tab can add a server from a name and URL, but the header still has to go in the settings file as above.
+
+If you use the Cline command line instead, its settings file is `~/.cline/data/settings/cline_mcp_settings.json`.
+
+## Check it works
+
+In a Cline chat, ask: **"What tools do you have from okf-mcp?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
+
+If it won't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer ` (with a space).
+
+## Undo it
+
+Open the same settings file, delete the `"okf-mcp"` entry, and save.
+
+<LastChecked date="2026-11-12" />

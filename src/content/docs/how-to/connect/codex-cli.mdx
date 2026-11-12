@@ -1,0 +1,52 @@
+---
+title: Connect OpenAI Codex CLI
+description: Add Telekin to the Codex CLI with a config file entry and an environment variable for your key.
+sidebar:
+  order: 12
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import LastChecked from '../../../../components/LastChecked.astro';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+You'll need: your server URL and key (from your invite).
+
+<Waitlist />
+
+Codex's `codex mcp add` command doesn't have a documented way to pass a key, so this page uses its config file instead. The key goes in an environment variable, not in the file.
+
+## Add the server
+
+<Steps>
+
+1. Open `~/.codex/config.toml`. (For one project only, you can use `.codex/config.toml` inside a project you've told Codex to trust.) Add this, with your own server URL:
+
+   ```toml
+   [mcp_servers.okf-mcp]
+   url = "<server URL>"
+   bearer_token_env_var = "OKF_KEY"
+   ```
+
+2. In the shell you'll start Codex from, set the variable to your key. Use the key alone, without the word `Bearer`: Codex sends it as a bearer token.
+
+   ```bash
+   export OKF_KEY="<your key>"
+   ```
+
+3. Start Codex from that same shell.
+
+</Steps>
+
+To keep the variable for later sessions, add the `export` line to your shell's startup file.
+
+## Check it works
+
+In a Codex session, ask: **"What tools do you have from okf-mcp?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
+
+If it won't connect, check that the URL ends in `/mcp`, and that `OKF_KEY` is set in the shell you started Codex from.
+
+## Undo it
+
+Delete the `[mcp_servers.okf-mcp]` table from the config file you edited, and remove the `export` line if you added one.
+
+<LastChecked date="2026-11-12" />

@@ -1,0 +1,71 @@
+---
+title: Connect VS Code (GitHub Copilot)
+description: Add Telekin to VS Code so GitHub Copilot's agent mode can use it, with the key kept out of the file.
+sidebar:
+  order: 10
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import LastChecked from '../../../../components/LastChecked.astro';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+You'll need: your server URL and key (from your invite).
+
+<Waitlist />
+
+VS Code has two ways to describe MCP servers, and newer Copilot setups also read separate files of their own. This page uses VS Code's own `mcp.json` file, because it can ask you for your key and store it securely instead of leaving it in the file.
+
+## Add the server
+
+VS Code reads servers from a file called `mcp.json`. There are two places for it:
+
+- `.vscode/mcp.json` inside a project is the **workspace** file: the server is available only in that project.
+- The `mcp.json` in your **user profile** is available in every project.
+
+<Steps>
+
+1. Create or edit one of those files so it contains this, with your own server URL. If the file already has other servers, add the `"okf-mcp"` entry inside `servers` and the key prompt inside `inputs`.
+
+   ```json
+   {
+     "inputs": [
+       {
+         "type": "promptString",
+         "id": "okf-key",
+         "description": "Telekin key",
+         "password": true
+       }
+     ],
+     "servers": {
+       "okf-mcp": {
+         "type": "http",
+         "url": "<server URL>",
+         "headers": {
+           "Authorization": "Bearer ${input:okf-key}"
+         }
+       }
+     }
+   }
+   ```
+
+2. Start the server from the file (VS Code shows controls on the server entry). The first time it starts, VS Code asks for the value of `okf-key`. Enter `<your key>` alone, without the word `Bearer`: the file already adds it. VS Code stores it for next time.
+
+</Steps>
+
+If you would rather paste the key into the file, replace the value `Bearer ${input:okf-key}` with `Bearer <your key>` and delete the `inputs` section. Then don't commit that file to a shared repository.
+
+You can also run **MCP: Add Server** from the Command Palette, choose the HTTP option and enter the URL. That flow doesn't ask for a header, so you'd still edit the JSON afterwards to add the `headers` section.
+
+Some organizations manage Copilot's settings, and their policy may switch MCP servers off. If you can't add the server, ask whoever manages your Copilot.
+
+## Check it works
+
+Open Copilot chat in agent mode and ask: **"What tools do you have from okf-mcp?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet. VS Code asks you to approve each tool call, so approve the request when it appears.
+
+If it won't connect, check that the URL ends in `/mcp` and that the key you entered is only the key.
+
+## Undo it
+
+Delete the `"okf-mcp"` entry (and the `okf-key` input) from the `mcp.json` file you edited.
+
+<LastChecked date="2026-11-12" />
