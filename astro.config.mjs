@@ -43,9 +43,12 @@ export default defineConfig({
         {
           label: 'Start here',
           items: [
-            // The "what is it" page lives in Explanation; this puts it where newcomers look first.
+            // Listed by hand so the overview comes first, then the "what is it" page
+            // (which lives in Explanation), then the tutorials. Add new tutorials here.
+            'start',
             { label: 'What is Telekin?', link: '/explanation/what-is-telekin/' },
-            { autogenerate: { directory: 'start' } },
+            'start/first-15-minutes',
+            'start/from-your-documents',
           ],
         },
         {
