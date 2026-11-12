@@ -1,0 +1,22 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Write the private denylist from a secret
+        env:
+          DENYLIST: ${{ secrets.DOCS_DENYLIST }}
+        run: printf '%s\n' "$DENYLIST" > .denylist
+      - run: npx astro build
+      - run: npm run check
+      - run: npm run check:testers
