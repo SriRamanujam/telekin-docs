@@ -22,15 +22,15 @@ Codex's `codex mcp add` command doesn't have a documented way to pass a key, so 
 1. Open `~/.codex/config.toml`. (For one project only, you can use `.codex/config.toml` inside a project you've told Codex to trust.) Add this, with your own server URL:
 
    ```toml
-   [mcp_servers.okf-mcp]
+   [mcp_servers.telekin]
    url = "<server URL>"
-   bearer_token_env_var = "OKF_KEY"
+   bearer_token_env_var = "TELEKIN_KEY"
    ```
 
 2. In the shell you'll start Codex from, set the variable to your key. Use the key alone, without the word `Bearer`: Codex sends it as a bearer token.
 
    ```bash
-   export OKF_KEY="<your key>"
+   export TELEKIN_KEY="<your key>"
    ```
 
 3. Start Codex from that same shell.
@@ -41,12 +41,12 @@ To keep the variable for later sessions, add the `export` line to your shell's s
 
 ## Check it works
 
-In a Codex session, ask: **"What tools do you have from okf-mcp?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
+In a Codex session, ask: **"What tools do you have from Telekin?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
 
-If it won't connect, check that the URL ends in `/mcp`, and that `OKF_KEY` is set in the shell you started Codex from.
+If it won't connect, check that the URL ends in `/mcp`, and that `TELEKIN_KEY` is set in the shell you started Codex from.
 
 ## Undo it
 
-Delete the `[mcp_servers.okf-mcp]` table from the config file you edited, and remove the `export` line if you added one.
+Delete the `[mcp_servers.telekin]` table from the config file you edited, and remove the `export` line if you added one.
 
 <LastChecked date="2026-11-12" />

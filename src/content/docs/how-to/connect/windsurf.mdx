@@ -20,12 +20,12 @@ Windsurf keeps its servers in a file called `mcp_config.json`. Its docs name mor
 <Steps>
 
 1. In Windsurf's Cascade panel, open the MCP menu and choose **Open MCP config file**. (Alternatively, go to **Settings, then Tools, then Windsurf Settings**, and use **Add Server**.)
-2. Make the file contain this, with your own server URL and key. If it already has other servers, add only the `"okf-mcp"` entry inside `mcpServers`.
+2. Make the file contain this, with your own server URL and key. If it already has other servers, add only the `"telekin"` entry inside `mcpServers`.
 
    ```json
    {
      "mcpServers": {
-       "okf-mcp": {
+       "telekin": {
          "serverUrl": "<server URL>",
          "headers": {
            "Authorization": "Bearer <your key>"
@@ -45,12 +45,12 @@ If you use Windsurf through a team or enterprise plan, MCP may need to be switch
 
 ## Check it works
 
-In a Cascade chat, ask: **"What tools do you have from okf-mcp?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
+In a Cascade chat, ask: **"What tools do you have from Telekin?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
 
 If it won't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer ` (with a space).
 
 ## Undo it
 
-Use **Open MCP config file** again, delete the `"okf-mcp"` entry, save, and press refresh.
+Use **Open MCP config file** again, delete the `"telekin"` entry, save, and press refresh.
 
 <LastChecked date="2026-11-12" />

@@ -22,12 +22,12 @@ This page is for Gemini CLI. Google's docs say Gemini CLI has been replaced by a
 1. Run this in a terminal, with your own server URL and key:
 
    ```bash
-   gemini mcp add --transport http --scope user --header "Authorization: Bearer <your key>" okf-mcp <server URL>
+   gemini mcp add --transport http --scope user --header "Authorization: Bearer <your key>" telekin <server URL>
    ```
 
    The `--scope user` part makes the server available in every project. Without it, the server is added only to the project you ran the command in. This exact combination of flags isn't shown in Google's docs, but each flag is, so it should work. If it doesn't, use the settings file below.
 
-2. Start `gemini` and ask it what tools it has from `okf-mcp`.
+2. Start `gemini` and ask it what tools it has from Telekin.
 
 </Steps>
 
@@ -36,7 +36,7 @@ Prefer a file? Add this to `~/.gemini/settings.json`:
 ```json
 {
   "mcpServers": {
-    "okf-mcp": {
+    "telekin": {
       "httpUrl": "<server URL>",
       "headers": {
         "Authorization": "Bearer <your key>"
@@ -50,12 +50,12 @@ Gemini CLI uses `httpUrl` for this kind of server. Don't use `url`, which means 
 
 ## Check it works
 
-In a Gemini CLI session, ask: **"What tools do you have from okf-mcp?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
+In a Gemini CLI session, ask: **"What tools do you have from Telekin?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
 
 If it won't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer ` (with a space).
 
 ## Undo it
 
-Delete the `"okf-mcp"` entry from `~/.gemini/settings.json` (or from the project's `.gemini/settings.json`, if you added it without `--scope user`).
+Delete the `"telekin"` entry from `~/.gemini/settings.json` (or from the project's `.gemini/settings.json`, if you added it without `--scope user`).
 
 <LastChecked date="2026-11-12" />

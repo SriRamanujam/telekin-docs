@@ -18,12 +18,12 @@ You'll need: your server URL and key (from your invite).
 <Steps>
 
 1. In the Cline panel, click the **MCP Servers** icon in the toolbar, then open the **Configure** tab and choose **Configure MCP Servers**. This opens Cline's settings file.
-2. Make the file contain this, with your own server URL and key. If it already has other servers, add only the `"okf-mcp"` entry inside `mcpServers`.
+2. Make the file contain this, with your own server URL and key. If it already has other servers, add only the `"telekin"` entry inside `mcpServers`.
 
    ```json
    {
      "mcpServers": {
-       "okf-mcp": {
+       "telekin": {
          "type": "streamableHttp",
          "url": "<server URL>",
          "headers": {
@@ -48,12 +48,12 @@ If you use the Cline command line instead, its settings file is `~/.cline/data/s
 
 ## Check it works
 
-In a Cline chat, ask: **"What tools do you have from okf-mcp?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
+In a Cline chat, ask: **"What tools do you have from Telekin?"** You should see a list. Then ask **"What do you know about me?"**; on an empty memory it will say there's nothing yet.
 
 If it won't connect, check that the URL ends in `/mcp` and that the header value starts with `Bearer ` (with a space).
 
 ## Undo it
 
-Open the same settings file, delete the `"okf-mcp"` entry, and save.
+Open the same settings file, delete the `"telekin"` entry, and save.
 
 <LastChecked date="2026-11-12" />
