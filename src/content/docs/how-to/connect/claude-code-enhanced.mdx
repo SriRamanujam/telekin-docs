@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components';
 import LastChecked from '../../../../components/LastChecked.astro';
 import Waitlist from '../../../../components/Waitlist.astro';
 
-You'll need: your server URL and key (from your invite), plus your catalog name (for example `t01`) and `python3`.
+You'll need: your Telekin address with `/mcp` at the end, and a key you make for Claude Code ([Make a key](/how-to/guides/make-a-key/)), plus your catalog name (for example `t01`, listed under **Your ceiling** on your console's **Account** page) and `python3`.
 
 <Waitlist />
 
@@ -84,7 +84,7 @@ Save this as `~/.claude/hooks/okf-session.py`. Set `CATALOG` to your catalog nam
 import json
 import sys
 
-CATALOG = "t01"     # your catalog's name (from your invite)
+CATALOG = "t01"     # your catalog's name (see your Account page)
 SERVER = "okf-mcp"  # the name you used in `claude mcp add`
 
 

@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components';
 import LastChecked from '../../../../components/LastChecked.astro';
 import Waitlist from '../../../../components/Waitlist.astro';
 
-You'll need: your server URL, and either a key or a sign-in code (from your invite).
+You'll need: your Telekin address with `/mcp` at the end (the `<server URL>` below), your Telekin account ([Set up your account](/start/set-up-your-account/)), and, if your app doesn't sign in with OAuth, a key you make for it ([Make a key](/how-to/guides/make-a-key/)).
 
 <Waitlist />
 
@@ -19,17 +19,17 @@ MCP (Model Context Protocol) is the standard way AI apps talk to tools like Tele
 
 Telekin accepts two ways to sign in, side by side, at the same URL. Use whichever your app supports.
 
-**If your app supports remote MCP servers with OAuth, use a sign-in code.**
+**If your app supports remote MCP servers with OAuth, sign in in the browser.**
 
 <Steps>
 
 1. **URL:** your `<server URL>`, which ends in `/mcp`.
 2. **Authentication:** choose OAuth, and leave any client ID and client secret fields empty.
-3. The app opens Telekin's sign-in page in a browser. Type your `<sign-in code>`, choose **Continue**, then **Approve** on the next page. A sign-in code works once, for one connection, and expires unused after 24 hours.
+3. The app opens Telekin's page in a browser. Sign in with your Telekin account if you're asked. On **Allow access?**, tick each memory the app may use (Telekin's screens call memories catalogs), choose **read** or **write** for each, pick a **Default catalog**, and choose **Approve**. The connection then shows on **My grants** in your Telekin console, where you can revoke it.
 
 </Steps>
 
-**Otherwise, use a key in a header.**
+**Otherwise, use a key you make, in a header.**
 
 <Steps>
 
@@ -51,6 +51,6 @@ Ask your AI: **"What tools do you have from Telekin?"** You should see a list of
 
 ## Undo it
 
-Remove the server from your app's MCP settings.
+Remove the server from your app's MCP settings. Then, in your Telekin console, revoke its key on **My keys**, or its connection on **My grants** if it signed in in the browser.
 
 <LastChecked date="2026-11-12" />
