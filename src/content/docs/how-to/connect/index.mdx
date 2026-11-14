@@ -8,17 +8,22 @@ sidebar:
 
 One short guide per AI app, each showing how to connect that app to your memory. Pick the app you use and follow the numbered steps.
 
-Two kinds of credential are in your invite. A **key** is for developer tools (Claude Code, Cursor, VS Code and the like). A **sign-in code** is for apps that sign in with OAuth: Claude on the web and desktop, and ChatGPT. A sign-in code works once, for one connection, and expires unused after 24 hours.
+Every app connects to the same address: your Telekin address with `/mcp` on the end, for example `https://telekin.example.com/mcp`. You'll need your Telekin account first; see [Set up your account](/start/set-up-your-account/).
 
-| App | Uses | Status | Guide |
+Apps connect in one of two ways:
+
+- **Sign in in the browser.** Claude on the web and desktop, and ChatGPT, open Telekin's page in your browser. You sign in with your Telekin account, choose which memories the app may use, and approve. There's nothing to copy or paste.
+- **A key you make.** Developer tools (Claude Code, Cursor, VS Code and the like) send a key with every request. You make one for each tool on your **My keys** page; see [Make a key](/how-to/guides/make-a-key/).
+
+| App | How it connects | Status | Guide |
 | --- | --- | --- | --- |
-| Claude (web and desktop; mobile apps should follow) | Sign-in code | Works today | [Connect Claude](/how-to/connect/claude/) |
-| Claude Code | Key | Works today | [Connect Claude Code](/how-to/connect/claude-code/), or [enhanced](/how-to/connect/claude-code-enhanced/) |
-| Cursor | Key | Works today | [Connect Cursor](/how-to/connect/cursor/) |
-| VS Code (GitHub Copilot) | Key | Works today | [Connect VS Code](/how-to/connect/vscode/) |
-| Windsurf | Key | Works today | [Connect Windsurf](/how-to/connect/windsurf/) |
-| OpenAI Codex CLI | Key | Works today | [Connect Codex CLI](/how-to/connect/codex-cli/) |
-| Gemini CLI | Key | Works today | [Connect Gemini CLI](/how-to/connect/gemini-cli/) |
-| Cline | Key | Works today | [Connect Cline](/how-to/connect/cline/) |
-| ChatGPT | Sign-in code | Works today | [Connect ChatGPT](/how-to/connect/chatgpt/) |
-| Any other app | Either | Maybe | [What an app needs](/how-to/connect/any-mcp-client/) |
+| Claude (web and desktop; mobile apps should follow) | Sign in in the browser | Works today | [Connect Claude](/how-to/connect/claude/) |
+| Claude Code | A key you make | Works today | [Connect Claude Code](/how-to/connect/claude-code/), or [enhanced](/how-to/connect/claude-code-enhanced/) |
+| Cursor | A key you make | Works today | [Connect Cursor](/how-to/connect/cursor/) |
+| VS Code (GitHub Copilot) | A key you make | Works today | [Connect VS Code](/how-to/connect/vscode/) |
+| Windsurf | A key you make | Works today | [Connect Windsurf](/how-to/connect/windsurf/) |
+| OpenAI Codex CLI | A key you make | Works today | [Connect Codex CLI](/how-to/connect/codex-cli/) |
+| Gemini CLI | A key you make | Works today | [Connect Gemini CLI](/how-to/connect/gemini-cli/) |
+| Cline | A key you make | Works today | [Connect Cline](/how-to/connect/cline/) |
+| ChatGPT | Sign in in the browser | Works today | [Connect ChatGPT](/how-to/connect/chatgpt/) |
+| Any other app | Either, depending on the app | Maybe | [What an app needs](/how-to/connect/any-mcp-client/) |

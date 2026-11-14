@@ -1,6 +1,6 @@
 ---
 title: Connect ChatGPT
-description: Add Telekin to ChatGPT as a custom MCP server and sign in with a one-time code, so ChatGPT can remember things between chats.
+description: Add Telekin to ChatGPT as a custom MCP server and sign in with your Telekin account, so ChatGPT can remember things between chats.
 sidebar:
   order: 5
 ---
@@ -9,11 +9,11 @@ import { Steps } from '@astrojs/starlight/components';
 import LastChecked from '../../../../components/LastChecked.astro';
 import Waitlist from '../../../../components/Waitlist.astro';
 
-You'll need: your server URL and a sign-in code (from your invite).
+You'll need: your Telekin address with `/mcp` at the end, and your Telekin account ([Set up your account](/start/set-up-your-account/)).
 
 <Waitlist />
 
-A sign-in code is a one-time code that lets one app connect. It works once, for one connection, and expires unused after 24 hours. Connecting ChatGPT and Claude takes two codes, and reconnecting later takes a new one.
+ChatGPT signs in in your browser with your Telekin account, so there's nothing to copy or paste. You choose which memories it may use, and you can disconnect it at any time from **My grants** in your Telekin console.
 
 ## Add the server
 
@@ -22,15 +22,15 @@ Custom MCP servers are added in ChatGPT on the web. Menu names change, so look f
 <Steps>
 
 1. In ChatGPT on the web, look for **Plugins** (or a similar place for custom MCP servers).
-2. Create a new one. Give it a name such as `Telekin`, an optional description, and paste your **Server URL**.
+2. Create a new one. Give it a name such as `Telekin`, an optional description, and paste your Telekin address with `/mcp` on the end as the **Server URL**.
 3. For authentication, choose **OAuth** (a way of signing in through a page in your browser; there's no password to paste). Leave any client ID or client secret fields empty.
 4. Create it, then install it.
-5. ChatGPT opens Telekin's sign-in page in your browser. It names the app that's connecting. Type your sign-in code and choose **Continue**.
-6. The next page states what will be granted: read or write access, which memory (catalog), and the name your changes are recorded under. Choose **Approve**. Your browser returns to ChatGPT, now connected. (**Deny** leaves your code unused.)
+5. ChatGPT opens Telekin's page in your browser. If you're not signed in, sign in with your Telekin account first.
+6. The page, **Allow access?**, names the app that's connecting. Tick each memory ChatGPT may use (Telekin's screens call memories catalogs), and choose **read** or **write** for each; choose **write** if you want ChatGPT to save what it learns. Pick a **Default catalog**, the memory it uses when it doesn't name one, and choose **Approve**. Your browser returns to ChatGPT, now connected. (**Deny** connects nothing.)
 
 </Steps>
 
-Finish the sign-in within 10 minutes of the page opening, and don't mistype the code five times, or it ends and you start again from ChatGPT. Once connected, ChatGPT stays connected on its own as long as you use it regularly.
+Finish within 10 minutes of the page opening, or it ends and you start again from ChatGPT. Once connected, ChatGPT stays connected on its own as long as you use it regularly.
 
 Two things may get in your way. Which ChatGPT plans include custom MCP servers isn't confirmed, and if you're in a workspace, an admin can restrict adding them.
 
@@ -40,10 +40,10 @@ In a new chat, ask: **"What tools do you have from Telekin?"** You should see Ch
 
 ChatGPT asks for your confirmation before each change it makes to your memory. That is expected. Approve the ones you want.
 
-If it won't connect, check that the URL ends in `/mcp`. If the sign-in page says your code didn't work, see [Troubleshoot](/how-to/guides/troubleshoot/).
+If it won't connect, check that the URL ends in `/mcp`. If signing in or approving doesn't work, see [Troubleshoot](/how-to/guides/troubleshoot/).
 
 ## Undo it
 
-Remove the Telekin server from the same place in ChatGPT where you added it. Nothing is deleted from your memory; it just stops being connected to ChatGPT. The person running your Telekin server can also revoke the connection. To connect again later, you'll need a new sign-in code.
+Remove the Telekin server from the same place in ChatGPT where you added it. Nothing is deleted from your memory; it just stops being connected to ChatGPT. You can also disconnect it from Telekin's side: in your Telekin console, open **My grants**, choose the ChatGPT connection, then **Revoke**. To connect again later, install it again and approve it.
 
 <LastChecked date="2026-11-12" />
