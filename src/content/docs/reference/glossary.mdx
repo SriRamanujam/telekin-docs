@@ -33,13 +33,25 @@ The Model Context Protocol, an open standard that lets an AI app use outside too
 
 What some apps (Claude, for example) call a connection to an MCP server. Adding Telekin to such an app means adding a custom connector.
 
-## Sign-in code
+## Account
 
-A one-time code for connecting an app that signs in with OAuth, such as Claude on the web or ChatGPT. It works once, for one app connection, and expires unused after 24 hours. You type it on Telekin's sign-in page. Developer tools use a key instead.
+How you sign in to Telekin, with your email and a password, or a passkey. You set it up from the link in your setup email. Your account decides which catalogs you, and the apps you connect, can reach. See [Set up your account](/start/set-up-your-account/).
+
+## Console
+
+Your Telekin's web pages, at your Telekin address. You sign in there to make keys (**My keys**), see and revoke app connections (**My grants**), and look after your password, passkeys and sessions (**Account**).
+
+## Grant
+
+An app connection you approved in your browser, such as Claude on the web or ChatGPT. It reaches the catalogs you ticked, at the level you chose. Grants are listed on **My grants** in the console, where you can revoke one.
+
+## Key
+
+A secret that lets a developer tool, such as Claude Code or Cursor, reach your catalogs without signing in. You make one for each tool on **My keys** in the console, and it's shown only once. See [Make a key](/how-to/guides/make-a-key/).
 
 ## OAuth
 
-A standard way for an app to be signed in without you handing it a password or key. The app sends you to a sign-in page in your browser, you approve it, and you're sent back. In Telekin, the page asks for a sign-in code. Claude on the web and ChatGPT connect this way.
+A standard way for an app to be signed in without you handing it a password or key. The app sends you to a sign-in page in your browser, you approve it, and you're sent back. In Telekin, you sign in with your account and choose which catalogs the app may use. Claude on the web and ChatGPT connect this way.
 
 ## OKF
 
