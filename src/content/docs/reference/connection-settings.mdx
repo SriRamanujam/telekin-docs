@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-Every app that connects to Telekin needs the same few settings, whatever it calls them. Your server URL and your key or sign-in code come from your invite. Telekin accepts both ways of signing in at the same URL.
+Every app that connects to Telekin needs the same few settings, whatever it calls them. The server URL is your Telekin address (the start of the link in your setup email) with `/mcp` at the end, for example `https://telekin.example.com/mcp`. Developer tools send a key you make on **My keys** ([Make a key](/how-to/guides/make-a-key/)); Claude on the web and desktop, and ChatGPT, sign in in your browser with your Telekin account instead. Telekin accepts both ways at the same URL.
 
 | Setting | Value | Required |
 |---|---|---|
@@ -19,28 +19,28 @@ Treat your key like a password. Don't paste it into chats or share it.
 
 ## OAuth sign-in
 
-Claude on the web and desktop, and ChatGPT, sign in with OAuth and use a sign-in code instead of a header.
+Claude on the web and desktop, and ChatGPT, sign in with OAuth: you sign in with your Telekin account in your browser and approve the connection, instead of sending a key in a header.
 
 | Setting | Value |
 |---|---|
 | URL | `<server URL>`, which ends in `/mcp` (the same as with a key) |
 | Authentication | OAuth. Leave any client ID and client secret empty |
-| Sign-in code | `<sign-in code>`, typed on Telekin's sign-in page in your browser |
-| Use | Single use: one code, one app connection |
-| Lifetime | Expires unused after 24 hours |
-| Sign-in time limit | Finish within 10 minutes of the page opening; five wrong codes end it |
+| Signing in | Your Telekin account (email and password, or a passkey), on Telekin's page in your browser |
+| Approving | On **Allow access?**, tick the catalogs the app may use, choose `read` or `write` for each, pick a default catalog, then **Approve** |
+| Sign-in time limit | Finish within 10 minutes of the page opening |
+| Revoking | **My grants** in your Telekin console |
 
-Each connection needs its own code, and reconnecting after a disconnect takes a new one. A connected app stays connected as long as it's used regularly. The `Authorization` and catalog settings above apply to keys; with a sign-in code, the approval page tells you which catalog is granted.
+Each app you connect is approved separately, and reconnecting after a disconnect means approving again. A connected app stays connected as long as it's used regularly. The `Authorization` header above applies to keys; with OAuth, the catalogs you approve decide what the app reaches.
 
 ## Which catalog Telekin uses
 
-A catalog is one collection of your notes. Most people have exactly one, and their key already points at it, so they never set a catalog at all.
+A catalog is one collection of your notes. Most people have exactly one, and the key or connection they made already points at it as its default catalog, so they never set a catalog at all.
 
 If you can reach more than one, Telekin picks in this order and stops at the first that names a catalog:
 
 1. The `X-OKF-Catalogs` header.
 2. The `?catalogs=` query parameter.
-3. The default catalog that belongs to your key.
+3. The default catalog you chose when you made your key or approved the connection.
 
 A misspelled header name is silently ignored, so if the wrong catalog is used, check the spelling first. Catalog names are case-sensitive: `T01` does not match `t01`.
 

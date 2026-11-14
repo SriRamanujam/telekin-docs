@@ -1,0 +1,68 @@
+---
+title: Set up your account
+description: Open the link in your setup email, choose a password or a passkey, and find your way back in later.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import Waitlist from '../../../components/Waitlist.astro';
+
+Your Telekin account is how you sign in, and how your AI apps get access to your memory. You set it up once, from an email.
+
+<Waitlist />
+
+## The setup email
+
+When you're invited, you get an email asking you to set up your account. It has one link in it. The link works once, and only for 24 hours. If you're sent a newer one, the older link stops working.
+
+## Set up your account
+
+<Steps>
+
+1. Open the link in the email. A page called **Set up your account** opens.
+2. Choose how you'll sign in. You can do either, or both:
+   - **A password.** Type one of 12 or more characters, type it again under **Confirm the password**, and choose **Set password and sign in**. Common passwords are refused.
+   - **A passkey** (your device signs you in with a fingerprint, face or PIN, so there's no password to remember). Under **Or use a passkey**, give it a name if you like, and choose **Register a passkey and sign in**. Your browser asks you to confirm.
+3. You're signed in, and your browser opens your Telekin console.
+
+</Steps>
+
+The console is your Telekin's web pages, where you manage your account and what your apps can reach. If you chose a password, you can add a passkey later on the **Account** page, and the other way round.
+
+## Your Telekin address
+
+The link in your setup email starts with your Telekin address, for example `https://telekin.example.com`. Keep that address:
+
+- **The address on its own opens the console.** Bookmark it.
+- **Your AI apps connect to the same address with `/mcp` on the end**, for example `https://telekin.example.com/mcp`. The guides in [Connect your AI](/how-to/connect/) call this your Telekin address with `/mcp`.
+
+## If the link has expired
+
+The page says **This link has expired. Ask for a new one.** This happens if 24 hours have passed, the link was already used, or a newer one was sent. Ask the person who invited you to send a new setup email.
+
+## Signing in later
+
+<Steps>
+
+1. Open your Telekin address. If you're not signed in, choose **Sign in with your account**.
+2. Type your email and password and choose **Sign in**, or choose **Sign in with a passkey**.
+
+</Steps>
+
+If you forgot your password, choose **Forgot your password?** on the sign-in page, type your email and choose **Send the link**. You get an email with a link to choose a new password. It works once, for 1 hour. Choosing a new password signs you out everywhere, so sign in again afterwards.
+
+After 10 wrong passwords in a row, your account is locked for 15 minutes. The page still says **Email or password is incorrect** while it's locked, so if you're sure the password is right, wait 15 minutes and try again.
+
+## The Account page
+
+In the console, **Account** is where you look after how you sign in:
+
+- change your password;
+- add, rename or remove passkeys;
+- see where you're signed in, and sign out of a session you don't recognize;
+- see your recent sign-ins;
+- see which memories your account can reach. Telekin's screens call memories **catalogs**.
+
+## What's next
+
+- [Your first 15 minutes](/start/first-15-minutes/) connects Claude and fills your memory.
+- [Connect your AI](/how-to/connect/) has a guide for each app.

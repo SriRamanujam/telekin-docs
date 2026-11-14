@@ -9,11 +9,11 @@ import { Steps, Aside } from '@astrojs/starlight/components';
 import LastChecked from '../../../../components/LastChecked.astro';
 import Waitlist from '../../../../components/Waitlist.astro';
 
-You'll need: your server URL and a sign-in code (from your invite).
+You'll need: your Telekin address with `/mcp` at the end, and your Telekin account ([Set up your account](/start/set-up-your-account/)).
 
 <Waitlist />
 
-A sign-in code is a one-time code that lets one app connect. It works once, for one connection, and expires unused after 24 hours. Connecting Claude and ChatGPT takes two codes, and reconnecting later takes a new one. If you need another, ask whoever gave you your invite.
+Claude signs in in your browser with your Telekin account, so there's nothing to copy or paste. You choose which memories it may use, and you can disconnect it at any time from **My grants** in your Telekin console.
 
 ## Add the connector
 
@@ -21,20 +21,20 @@ A sign-in code is a one-time code that lets one app connect. It works once, for 
 
 1. Go to **Customize, then Connectors** (claude.ai/customize/connectors).
 2. Click **+ Add**, then **Add custom connector**.
-3. Name it `Telekin`, paste the **Server URL**, and click **Continue**. If you're asked how to authenticate, choose **OAuth** (a way of signing in through a page in your browser; there's no password to paste). Leave any client ID or client secret fields empty.
-4. Claude opens Telekin's sign-in page in your browser. It names the app that's connecting. Type your sign-in code and choose **Continue**.
-5. The next page states what will be granted: read or write access, which memory (catalog), and the name your changes are recorded under. Choose **Approve**. Your browser returns to Claude, now connected. (**Deny** leaves your code unused.)
+3. Name it `Telekin`, paste your Telekin address with `/mcp` on the end as the **Server URL**, and click **Continue**. If you're asked how to authenticate, choose **OAuth** (a way of signing in through a page in your browser; there's no password to paste). Leave any client ID or client secret fields empty.
+4. Claude opens Telekin's page in your browser. If you're not signed in, sign in with your Telekin account first.
+5. The page, **Allow access?**, names the app that's connecting. Tick each memory Claude may use (Telekin's screens call memories catalogs), and choose **read** or **write** for each; choose **write** if you want Claude to save what it learns. Pick a **Default catalog**, the memory it uses when it doesn't name one, and choose **Approve**. Your browser returns to Claude, now connected. (**Deny** connects nothing.)
 6. In a chat, click **+**, then **Connectors**, and make sure `Telekin` is on.
 
 </Steps>
 
-Finish the sign-in within 10 minutes of the page opening, and don't mistype the code five times, or it ends and you start again from Claude. Claude Desktop uses the same connectors and the same settings page.
+Finish within 10 minutes of the page opening, or it ends and you start again from Claude. Claude Desktop uses the same connectors and the same settings page.
 
 A few things worth knowing:
 
 - Free plans allow one custom connector.
 - Once connected, Claude stays connected on its own as long as you use it regularly.
-- On Team and Enterprise plans, a connector an owner adds to the organization connects everyone through one sign-in, so everyone would see and change the same memory. Don't add Telekin that way. Add it as your own connector instead. Telekin is for one person per memory today; teams are planned.
+- On Team and Enterprise plans, a connector an owner adds to the organization connects everyone through one sign-in, so everyone would see and change the same memory. Don't add Telekin that way. Add it as your own connector instead: each person signs in with their own Telekin account. To share a memory with your team, use a Telekin team, which keeps each person's changes under their own name (see the [FAQ](/faq/)).
 - Claude connects from Anthropic's servers, so the server URL must be reachable from the public internet.
 
 **On your phone:** connectors you add on the web or desktop should appear in the Claude mobile apps after you next sign in. Set it up on the web or desktop first.
@@ -43,10 +43,10 @@ A few things worth knowing:
 
 In a chat with `Telekin` switched on, ask: **"What tools do you have from Telekin?"** You should see Claude list tools for searching and saving to your memory. Then ask **"What do you know about me?"**; on an empty memory it will tell you there's nothing yet.
 
-If the connector won't connect, check that the URL ends in `/mcp`. If the sign-in page says your code didn't work, see [Troubleshoot](/how-to/guides/troubleshoot/). If Claude says it has no tools, make sure the connector is toggled on in this chat (**+**, then **Connectors**).
+If the connector won't connect, check that the URL ends in `/mcp`. If signing in or approving doesn't work, see [Troubleshoot](/how-to/guides/troubleshoot/). If Claude says it has no tools, make sure the connector is toggled on in this chat (**+**, then **Connectors**).
 
 ## Undo it
 
-Go to **Customize, then Connectors**, open `Telekin` and remove it. Nothing is deleted from your memory; it just stops being connected to Claude. The person running your Telekin server can also revoke the connection. To connect again later, you'll need a new sign-in code.
+Go to **Customize, then Connectors**, open `Telekin` and remove it. Nothing is deleted from your memory; it just stops being connected to Claude. You can also disconnect it from Telekin's side: in your Telekin console, open **My grants**, choose the Claude connection, then **Revoke**. To connect again later, add the connector again and approve it.
 
 <LastChecked date="2026-11-12" />

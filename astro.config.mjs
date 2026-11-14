@@ -44,9 +44,11 @@ export default defineConfig({
           label: 'Start here',
           items: [
             // Listed by hand so the overview comes first, then the "what is it" page
-            // (which lives in Explanation), then the tutorials. Add new tutorials here.
+            // (which lives in Explanation), then setting up your account, then the
+            // tutorials. Add new tutorials here.
             'start',
             { label: 'What is Telekin?', link: '/explanation/what-is-telekin/' },
+            'start/set-up-your-account',
             'start/first-15-minutes',
             'start/from-your-documents',
           ],

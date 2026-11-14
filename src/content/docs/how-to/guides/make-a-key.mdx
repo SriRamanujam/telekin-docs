@@ -1,0 +1,64 @@
+---
+title: Make a key for a developer tool
+description: Create a key on My keys for Claude Code, Cursor or another developer tool, keep it safe, and revoke it when you're done.
+sidebar:
+  label: Make a key
+  order: 0.5
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import Waitlist from '../../../../components/Waitlist.astro';
+
+A **key** is a long secret that lets one app reach your memory without signing in. You make keys yourself, in your Telekin console.
+
+<Waitlist />
+
+## When you need one
+
+Developer tools need a key: Claude Code, Cursor, VS Code, Windsurf, Codex CLI, Gemini CLI, Cline, and most other tools that connect to MCP servers. Claude on the web and desktop and ChatGPT don't: they sign in in your browser with your account instead.
+
+You'll need your Telekin account. If you haven't set it up yet, see [Set up your account](/start/set-up-your-account/).
+
+## Make the key
+
+<Steps>
+
+1. Open your Telekin address and sign in.
+2. Open **My keys** and choose **New key**.
+3. Under **Name**, give it the tool's name, for example `cursor`. Letters, digits, dots, dashes and underscores work; spaces don't.
+4. Tick each memory the tool should reach, and choose **read** or **write** for each. Telekin's screens call memories **catalogs**. Choose **write** if you want the tool to save what it learns.
+5. Under **Default catalog**, pick the memory the tool uses when it doesn't name one. With one memory, pick that.
+6. Under **Expires**, choose when the key stops working. Telekin may limit how long a key can last; the longest it allows is marked "the longest allowed".
+7. Choose **Create key**.
+8. Copy the key now. It's shown only once: Telekin doesn't store it, so it can't show it to you again. If you lose it, revoke it and make a new one.
+
+</Steps>
+
+You should now see the key's name on **My keys**, with its state `active`.
+
+## Keep it safe
+
+Treat a key like a password: anyone who has it can read and change what it reaches.
+
+- Put it where your tool's guide says. Some guides keep it in an environment variable, such as `TELEKIN_KEY`, so it never sits in a file you share.
+- Never paste it into a chat with an AI.
+- Never put it in a file you commit to a repository.
+- Leave it out of screenshots.
+
+## One key per tool
+
+Make a separate key for each tool, named after it. Then you can revoke one tool's key without stopping the others.
+
+## Revoke a key
+
+On **My keys**, choose the key, then **Revoke**, and confirm. Anything using the key is refused from its next request. This can't be undone; make a new key if you want the tool back.
+
+To see keys that have expired or been revoked, tick **Show revoked and expired keys**.
+
+## If you can't make the key you want
+
+What a key can reach is limited by what your account reaches: your teams' memories, at the level each team allows, plus any memory shared with you. The **Account** page lists them under **Your ceiling**.
+
+- **A memory isn't in the list,** or only **read** is offered: your account doesn't reach it, or reaches it read-only. Ask the person who invited you.
+- **New key is grayed out:** the note above the list says why. Either your account reaches no memory yet, or you have as many keys as you're allowed, so revoke one first.
+- **Creating the key is refused:** the message names the limit you went over, such as asking for more access than your account has, or an expiry past the longest allowed. Change that choice and try again.
